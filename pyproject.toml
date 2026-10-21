@@ -52,9 +52,9 @@ dev = ["pytest>=8", "pyyaml>=6"]
 testpaths = ["tests"]
 
 [project.urls]
-Homepage = "https://github.com/wuyoscar/gpt_image_2_skill"
-Repository = "https://github.com/wuyoscar/gpt_image_2_skill"
-Issues = "https://github.com/wuyoscar/gpt_image_2_skill/issues"
+Homepage = "https://github.com/aelaguiz/GPT-Image2-Skill"
+Repository = "https://github.com/aelaguiz/GPT-Image2-Skill"
+Issues = "https://github.com/aelaguiz/GPT-Image2-Skill/issues"
 
 [project.scripts]
 gpt-image = "gpt_image_cli.cli:main"

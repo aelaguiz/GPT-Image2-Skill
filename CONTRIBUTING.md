@@ -5,7 +5,7 @@ Contribute a useful prompt, an inspected example, a CLI fix or clearer skill gui
 ## Add a gallery entry
 
 1. Read the actual prompt and choose a relevant `skills/gpt-image/references/gallery-*.md` category. The split gallery is canonical; README is a selected showcase.
-2. Append a stable number after the current maximum and update `references/gallery.md` ranges/counts. Do not renumber unrelated entries. The catalog currently contains 162 historical entries and 10 live-tested 2.5 recipes, No. 163–172.
+2. Append a stable number after the current maximum and update `references/gallery.md` ranges/counts. Do not renumber unrelated entries. The catalog currently contains 163 historical entries and 10 live-tested 2.5 recipes, No. 164–173.
 3. Record prompt authorship/source separately from image provenance. “Curated” is an editorial label, not a generating-model record. Preserve an outside prompt's author and source URL; an unknown generating model remains unknown.
 4. Add actual inspected outputs under `docs/<category-slug>/`. Small reusable original or rights-cleared input images belong inside `skills/gpt-image/assets/` with their provenance, so folder-only installs can use them. Mark recipes without outputs **unexecuted** and do not add nonexistent preview links.
 5. Promote a selected rendered example to both `README.md` and `README.zh.md`, with matching input/output paths, model/settings and status. A catalog-only addition does not require duplicating the full entry into both READMEs.

@@ -2,11 +2,11 @@
 
 > **Historical gallery entry source.** Original prompts, numbering and attribution are retained. Preview images and generation settings are historical; an unrecorded generating model remains unknown. Repository-relative previews are optional archive assets and may be absent in standalone skill installs. Use [model-api.md](model-api.md) for current 2.5 settings and attach your own actual files for reference edits.
 
-Range: No. 161–162 · Count: 2
+Range: No. 162–163 · Count: 2
 
 Load this file only when the request matches photo-of-screen realism, laptop-screen POV shots, moiré/RGB-pixel artifacts, or “not a screenshot” interface photography. For cross-cutting writing rules, pair it with `craft.md`.
 
-### No. 161 · Music app + webcam preview
+### No. 162 · Music app + webcam preview
 
 - Image: `docs/screen-photography/laptop-music-webcam-screen.png`
 
@@ -17,7 +17,7 @@ Load this file only when the request matches photo-of-screen realism, laptop-scr
 Create a raw smartphone photo of a laptop screen, not a screenshot. Aspect ratio 3:4, high-angle downward POV looking down at a laptop on a desk at night. The screen fills most of the frame with a thin strip of physical keyboard visible at the bottom. Emphasize visible RGB pixel grid, subtle moire bands, micro dust on glass, faint fingerprints, soft ambient reflections, handheld phone noise, slight perspective skew, imperfect glass. macOS dark mode. Background app: a generic music player in Liked Songs view with fictional visible tracks: "City Lights", "Late Night Walk", "Summer Static", "Blue Hour". Foreground app: a small webcam preview window floating center-right, showing only a cozy desk corner with a ceramic mug, notebook, small plush bear, warm desk lamp, and off-white wall. Make it look like an accidental real phone photo of a screen, candid and unpolished. No people, no faces, no celebrity names, no real-person likeness, no screenshot, no flat UI, no perfect clean glass, no studio lighting, no cartoon, no 3D render, no watermark.
 ```
 
-### No. 162 · Notes + FaceTime work screen
+### No. 163 · Notes + FaceTime work screen
 
 - Image: `docs/screen-photography/laptop-notes-facetime-screen.png`
 

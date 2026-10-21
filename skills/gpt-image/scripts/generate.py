@@ -26,7 +26,7 @@ import sys
 import re
 from pathlib import Path
 
-_REPO_URL = "git+https://github.com/wuyoscar/gpt_image_2_skill"
+_REPO_URL = "git+https://github.com/aelaguiz/GPT-Image2-Skill"
 _MIN_BACKEND = (0, 3, 0)
 
 

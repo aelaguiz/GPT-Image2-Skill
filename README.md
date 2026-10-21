@@ -8,11 +8,11 @@
 |---|---|
 | Generation/editing skill and canonical CLI | [SKILL.md](skills/gpt-image/SKILL.md), [API contract](skills/gpt-image/references/model-api.md) |
 | Reference roles, style transfer, chained edits, masks and alpha | [Reference guide](skills/gpt-image/references/reference-images.md) |
-| 10 new 2.5 recipes with portable original inputs | [No. 163–172](skills/gpt-image/references/gallery-gpt-image-2-5.md); authored, **not yet API-generated** |
-| 162 historical prompts and selected previews | [Full gallery index](skills/gpt-image/references/gallery.md); original provenance retained |
+| 10 new 2.5 recipes with portable original inputs | [No. 164–173](skills/gpt-image/references/gallery-gpt-image-2-5.md); live-tested |
+| 163 historical prompts and selected previews | [Full gallery index](skills/gpt-image/references/gallery.md); original provenance retained |
 | Image-to-prompt companion skill | [get-prompt-from-image](skills/get-prompt-from-image/SKILL.md) |
 
-The old previews are historical and are not evidence of GPT Image 2.5 performance. The new recipes demonstrate how to request the features; their API outputs and visual comparisons remain pending. See the [migration plan](docs/gpt-image-2.5-migration-plan.md) and [implementation validation](docs/gpt-image-2-5/validation.md).
+The old previews are historical and are not evidence of GPT Image 2.5 performance. The new recipes were run against the API on 2026-09-08; their [live outputs and review](docs/gpt-image-2-5/live/README.md) record results and caveats. Upstream's Sunburst samples are in [docs/sunburst-samples.md](docs/sunburst-samples.md). See the [migration plan](docs/gpt-image-2.5-migration-plan.md) and [implementation validation](docs/gpt-image-2-5/validation.md).
 
 OpenAI's [release](https://openai.com/index/introducing-chatgpt-images-2-5/), [2.5 prompting guide](https://developers.openai.com/api/docs/guides/image-prompting) and [Images API guide](https://developers.openai.com/api/docs/guides/image-generation) are the current source material. Both 2.5 variants support generation, editing, inpainting and `xhigh`/`max` quality. ChatGPT Sketch, templates and comments are product interfaces; this CLI uses ordinary image references and masks.
 
@@ -32,7 +32,7 @@ test -n "${OPENAI_API_KEY:-}" && echo "OPENAI_API_KEY is already set (value hidd
 <summary><strong>Claude Code</strong></summary>
 
 ```text
-/plugin marketplace add wuyoscar/gpt_image_2_skill
+/plugin marketplace add aelaguiz/GPT-Image2-Skill
 /plugin install gpt-image@wuyoscar-skills
 ```
 
@@ -48,12 +48,12 @@ Open Codex and invoke the built-in installer with the GitHub skill-folder URL fo
 # gpt-image
 $skill-installer
 Install this skill from GitHub:
-https://github.com/wuyoscar/gpt_image_2_skill/tree/main/skills/gpt-image
+https://github.com/aelaguiz/GPT-Image2-Skill/tree/main/skills/gpt-image
 
 # get-prompt-from-image
 $skill-installer
 Install this skill from GitHub:
-https://github.com/wuyoscar/gpt_image_2_skill/tree/main/skills/get-prompt-from-image
+https://github.com/aelaguiz/GPT-Image2-Skill/tree/main/skills/get-prompt-from-image
 ```
 
 The installer downloads each GitHub folder and places it under your Codex skills directory, usually:
@@ -68,8 +68,8 @@ Restart Codex after installation so the new skills are loaded.
 If you prefer to install both manually, copy their skill folders into Codex's skills directory:
 
 ```bash
-git clone https://github.com/wuyoscar/gpt_image_2_skill.git
-cd gpt_image_2_skill
+git clone https://github.com/aelaguiz/GPT-Image2-Skill.git
+cd GPT-Image2-Skill
 
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
 for skill in gpt-image get-prompt-from-image; do
@@ -87,7 +87,7 @@ For runtimes supported by the cross-agent `skills` installer, select either skil
 
 ```bash
 # Change --agent to claude-code, codex, opencode, openclaw, or another supported runtime.
-npx --yes skills@latest add wuyoscar/gpt_image_2_skill \
+npx --yes skills@latest add aelaguiz/GPT-Image2-Skill \
   --skill gpt-image \
   --skill get-prompt-from-image \
   --agent codex --copy
@@ -105,8 +105,8 @@ If your runtime is not listed by `skills@latest` yet, use the manual Agent Skill
 Set `AGENT_SKILLS_DIR` to the skills directory used by your agent runtime, then symlink one or both skill folders into it.
 
 ```bash
-git clone https://github.com/wuyoscar/gpt_image_2_skill.git
-cd gpt_image_2_skill
+git clone https://github.com/aelaguiz/GPT-Image2-Skill.git
+cd GPT-Image2-Skill
 
 # Choose the skill directory for your runtime.
 # Examples:
@@ -132,10 +132,10 @@ uv run gpt-image --version
 uv run gpt-image -p "a cat astronaut"
 
 # Remote execution uses the published repository version; verify first
-uvx --from git+https://github.com/wuyoscar/gpt_image_2_skill gpt-image --version
+uvx --from git+https://github.com/aelaguiz/GPT-Image2-Skill gpt-image --version
 
 # or install to PATH if not already installed
-command -v gpt-image >/dev/null || uv tool install git+https://github.com/wuyoscar/gpt_image_2_skill
+command -v gpt-image >/dev/null || uv tool install git+https://github.com/aelaguiz/GPT-Image2-Skill
 gpt-image --version  # Require 0.3.0+ and the Flare default
 gpt-image -p "a cat astronaut"
 ```
@@ -149,7 +149,7 @@ gpt-image -p "a cat astronaut"
 # plugin: use Claude Code's update flow
 # codex skill: rerun the installer
 # manual git clone
-cd gpt_image_2_skill && git pull
+cd GPT-Image2-Skill && git pull
 
 # CLI
 uv tool upgrade gpt-image-cli
@@ -302,9 +302,9 @@ The [craft guide](skills/gpt-image/references/craft.md) retains practical art di
 
 | Example | What to try |
 |---|---|
-| Subject + style | [No. 164](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-164--e2-subject-identity-plus-style-only-reference): dog identity with a separate illustrated style |
-| Precise edit + retained follow-ups | [No. 166–167](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-166--e4-correct-one-price-without-redesigning): price, cap color, date |
-| Real transparent output | [No. 169](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-169--e7-transparent-cutout-and-transparent-follow-up): alpha cutout and cap recolor |
+| Subject + style | [No. 165](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-165--e2-subject-identity-plus-style-only-reference): dog identity with a separate illustrated style |
+| Precise edit + retained follow-ups | [No. 167–168](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-167--e4-correct-one-price-without-redesigning): price, cap color, date |
+| Real transparent output | [No. 170](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-170--e7-transparent-cutout-and-transparent-follow-up): alpha cutout and cap recolor |
 
 The full set also covers product/style/logo inputs, sketch/material separation, annotations/masks, localization and a coordinated campaign. All twelve [starter images](skills/gpt-image/assets/gpt-image-2-5/README.md) are original deterministic drawings, not 2.5 results. These recipes are **unexecuted** until an API run and visual review are recorded.
 

@@ -2,11 +2,11 @@
 
 > **Historical gallery entry source.** Original prompts, numbering and attribution are retained. Preview images and generation settings are historical; an unrecorded generating model remains unknown. Repository-relative previews are optional archive assets and may be absent in standalone skill installs. Use [model-api.md](model-api.md) for current 2.5 settings and attach your own actual files for reference edits.
 
-Range: No. 96–99 · Count: 4
+Range: No. 97–100 · Count: 4
 
 Load this file only when the request matches this category. For cross-cutting writing rules, pair it with `craft.md`.
 
-### No. 96 · Automatic coffee machine infographic
+### No. 97 · Automatic coffee machine infographic
 
 - Image: `docs/official-openai-cookbook/coffee-infographic.png`
 
@@ -19,7 +19,7 @@ From bean basket, to grinding, to scale, water tank, boiler, etc.
 I'd like to understand technically and visually the flow.
 ```
 
-### No. 97 · Photorealistic elderly sailor
+### No. 98 · Photorealistic elderly sailor
 
 - Image: `docs/official-openai-cookbook/sailor.png`
 
@@ -34,7 +34,7 @@ Soft coastal daylight, shallow depth of field, subtle film grain, natural color 
 The image should feel honest and unposed, with real skin texture, worn materials, and everyday detail. No glamorization, no heavy retouching.
 ```
 
-### No. 98 · Minimalist bakery logo — Field & Flour
+### No. 99 · Minimalist bakery logo — Field & Flour
 
 - Image: `docs/official-openai-cookbook/logo-bakery.png`
 
@@ -48,7 +48,7 @@ Favor simplicity over detail so it reads clearly at small and large sizes. Flat 
 Plain background. Deliver a single centered logo with generous padding. No watermark.
 ```
 
-### No. 99 · 4-panel pet comic strip
+### No. 100 · 4-panel pet comic strip
 
 - Image: `docs/official-openai-cookbook/comic-pet.png`
 

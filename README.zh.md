@@ -8,11 +8,11 @@
 |---|---|
 | 生成/编辑技能与统一 CLI | [SKILL.md](skills/gpt-image/SKILL.md)、[API 参数说明](skills/gpt-image/references/model-api.md) |
 | 参考图角色、风格迁移、连续编辑、蒙版和透明背景 | [参考图指南](skills/gpt-image/references/reference-images.md) |
-| 10 个 2.5 示例，附可独立使用的原创输入素材 | [No. 163–172](skills/gpt-image/references/gallery-gpt-image-2-5.md)；已编写，**尚未调用 API 生成结果** |
+| 10 个 2.5 示例，附可独立使用的原创输入素材 | [No. 164–173](skills/gpt-image/references/gallery-gpt-image-2-5.md)；已实际测试 |
 | 162 个历史提示词及精选预览 | [完整图库索引](skills/gpt-image/references/gallery.md)；保留原始来源 |
 | 从图片提取提示词的配套技能 | [get-prompt-from-image](skills/get-prompt-from-image/SKILL.md) |
 
-旧预览属于历史资料，不能用来证明 GPT Image 2.5 的效果。新示例展示正确的请求方式，实际输出及视觉对比仍待执行。详见[迁移计划](docs/gpt-image-2.5-migration-plan.md)和[实施验证记录](docs/gpt-image-2-5/validation.md)。
+旧预览属于历史资料，不能用来证明 GPT Image 2.5 的效果。新示例已于 2026-09-08 实际调用 API 生成，[实际输出与评审](docs/gpt-image-2-5/live/README.md)记录了结果和注意事项。上游的 Sunburst 示例见 [docs/sunburst-samples.md](docs/sunburst-samples.md)。详见[迁移计划](docs/gpt-image-2.5-migration-plan.md)和[实施验证记录](docs/gpt-image-2-5/validation.md)。
 
 当前资料依据 OpenAI 的[发布说明](https://openai.com/index/introducing-chatgpt-images-2-5/)、[2.5 提示词指南](https://developers.openai.com/api/docs/guides/image-prompting)与[图像 API 指南](https://developers.openai.com/api/docs/guides/image-generation)。两个 2.5 变体均支持生成、编辑、局部重绘以及 `xhigh`/`max` 质量。ChatGPT 的 Sketch、模板与评论属于产品界面；本 CLI 使用普通参考图片与蒙版。
 
@@ -32,7 +32,7 @@ test -n "${OPENAI_API_KEY:-}" && echo "OPENAI_API_KEY is already set (value hidd
 <summary><strong>Claude Code</strong></summary>
 
 ```text
-/plugin marketplace add wuyoscar/gpt_image_2_skill
+/plugin marketplace add aelaguiz/GPT-Image2-Skill
 /plugin install gpt-image@wuyoscar-skills
 ```
 
@@ -48,12 +48,12 @@ Codex 内置了 `$skill-installer`、`$skill-creator` 等 Skill 管理工具。
 # gpt-image
 $skill-installer
 Install this skill from GitHub:
-https://github.com/wuyoscar/gpt_image_2_skill/tree/main/skills/gpt-image
+https://github.com/aelaguiz/GPT-Image2-Skill/tree/main/skills/gpt-image
 
 # get-prompt-from-image
 $skill-installer
 Install this skill from GitHub:
-https://github.com/wuyoscar/gpt_image_2_skill/tree/main/skills/get-prompt-from-image
+https://github.com/aelaguiz/GPT-Image2-Skill/tree/main/skills/get-prompt-from-image
 ```
 
 安装器会下载每个 GitHub 文件夹，并放到你的 Codex skills 目录，通常是：
@@ -68,8 +68,8 @@ https://github.com/wuyoscar/gpt_image_2_skill/tree/main/skills/get-prompt-from-i
 如果你想手动同时安装，可以把两个 skill 文件夹复制到 Codex 的 skills 目录：
 
 ```bash
-git clone https://github.com/wuyoscar/gpt_image_2_skill.git
-cd gpt_image_2_skill
+git clone https://github.com/aelaguiz/GPT-Image2-Skill.git
+cd GPT-Image2-Skill
 
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
 for skill in gpt-image get-prompt-from-image; do
@@ -87,7 +87,7 @@ done
 
 ```bash
 # 将 --agent 改为 claude-code、codex、opencode、openclaw 或其他受支持运行时。
-npx --yes skills@latest add wuyoscar/gpt_image_2_skill \
+npx --yes skills@latest add aelaguiz/GPT-Image2-Skill \
   --skill gpt-image \
   --skill get-prompt-from-image \
   --agent codex --copy
@@ -105,8 +105,8 @@ npx --yes skills@latest add wuyoscar/gpt_image_2_skill \
 把 `AGENT_SKILLS_DIR` 设置为你的 Agent 运行时所使用的 skills 目录，然后把一个或两个 skill 文件夹软链接进去。
 
 ```bash
-git clone https://github.com/wuyoscar/gpt_image_2_skill.git
-cd gpt_image_2_skill
+git clone https://github.com/aelaguiz/GPT-Image2-Skill.git
+cd GPT-Image2-Skill
 
 # 选择你的运行时对应的 skills 目录。
 # 示例：
@@ -132,10 +132,10 @@ uv run gpt-image --version
 uv run gpt-image -p "a cat astronaut"
 
 # Remote execution uses the published repository version; verify first
-uvx --from git+https://github.com/wuyoscar/gpt_image_2_skill gpt-image --version
+uvx --from git+https://github.com/aelaguiz/GPT-Image2-Skill gpt-image --version
 
 # 或在尚未安装时安装到 PATH
-command -v gpt-image >/dev/null || uv tool install git+https://github.com/wuyoscar/gpt_image_2_skill
+command -v gpt-image >/dev/null || uv tool install git+https://github.com/aelaguiz/GPT-Image2-Skill
 gpt-image --version  # Require 0.3.0+ and the Flare default
 gpt-image -p "a cat astronaut"
 ```
@@ -149,7 +149,7 @@ gpt-image -p "a cat astronaut"
 # 插件：使用 Claude Code 的更新流程
 # codex 技能：重新运行安装器
 # 手动 git 克隆方式
-cd gpt_image_2_skill && git pull
+cd GPT-Image2-Skill && git pull
 
 # CLI
 uv tool upgrade gpt-image-cli
@@ -302,9 +302,9 @@ result = client.images.generate(
 
 | 示例 | 内容 |
 |---|---|
-| 主体 + 风格 | [No. 164](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-164--e2-subject-identity-plus-style-only-reference)：保留小狗身份，另用插画风格参考 |
-| 精确编辑 + 连续保留修改 | [No. 166–167](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-166--e4-correct-one-price-without-redesigning)：价格、瓶盖颜色、日期 |
-| 真实透明输出 | [No. 169](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-169--e7-transparent-cutout-and-transparent-follow-up)：alpha 抠图及瓶盖改色 |
+| 主体 + 风格 | [No. 165](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-165--e2-subject-identity-plus-style-only-reference)：保留小狗身份，另用插画风格参考 |
+| 精确编辑 + 连续保留修改 | [No. 167–168](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-167--e4-correct-one-price-without-redesigning)：价格、瓶盖颜色、日期 |
+| 真实透明输出 | [No. 170](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-170--e7-transparent-cutout-and-transparent-follow-up)：alpha 抠图及瓶盖改色 |
 
 完整示例还涵盖产品/风格/Logo、多参考草图与材质、标注/蒙版、本地化和统一系列。十二张[起始素材](skills/gpt-image/assets/gpt-image-2-5/README.md)均为原创确定性绘图，不是 2.5 生成结果。在完成 API 调用及视觉检查之前，这些示例均标记为**未执行**。
 

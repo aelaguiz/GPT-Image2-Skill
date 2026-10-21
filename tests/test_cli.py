@@ -62,7 +62,8 @@ def api(monkeypatch):
         return httpx2.Response(200, json={"created": 1, "data": [{"b64_json": encoded}] * count,
                                          "quality": body["quality"], "size": body["size"]})
 
-    def client():
+    def client(**kwargs):
+        assert kwargs == {"max_retries": 0}
         return OpenAI(api_key="offline-test", base_url="https://mock.invalid/v1", max_retries=0,
                       http_client=httpx2.Client(transport=httpx2.MockTransport(handle)))
 

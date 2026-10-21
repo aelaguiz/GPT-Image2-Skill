@@ -279,7 +279,7 @@ def main(argv: list[str] | None = None) -> int:
         print("error: OPENAI_API_KEY is not set in the environment, .env, or ~/.env. Configure it locally and retry.", file=sys.stderr)
         return 2
     try:
-        with OpenAI() as client:
+        with OpenAI(max_retries=0) as client:  # No hidden retries of billable image requests.
             result = call_edit(client, args) if args.image else call_generate(client, args)
         paths = write_outputs(
             result.data or [], out_path, args.n, expected_format=args.output_format,

@@ -1,7 +1,7 @@
 ---
 name: gpt-image
 description: "Generate and edit images through the OpenAI Images API, defaulting to GPT Image 2.5 Flare. Use for explicit GPT Image requests, reference-guided artwork, style transfer, precise image edits, inpainting, transparent assets, posters, typography, UI concepts, and diagrams. Use the packaged CLI; inspect references and assign their roles before generation."
-metadata: {"openclaw":{"requires":{"anyBins":["gpt-image","uv","uvx"]},"primaryEnv":"OPENAI_API_KEY","homepage":"https://github.com/wuyoscar/gpt_image_2_skill"}}
+metadata: {"openclaw":{"requires":{"anyBins":["gpt-image","uv","uvx"]},"primaryEnv":"OPENAI_API_KEY","homepage":"https://github.com/aelaguiz/GPT-Image2-Skill"}}
 ---
 
 # GPT Image

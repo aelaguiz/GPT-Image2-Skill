@@ -1,4 +1,4 @@
-# GPT Image 2.5 feature recipes — No. 163–172
+# GPT Image 2.5 feature recipes — No. 164–173
 
 **Status: rendered and visually inspected on 2026-09-08.** All ten recipes were exercised through the real API, with 21 GPT Image 2.5 requests plus one Image 2 baseline. One campaign result required a focused correction. See [actual outputs, records and limitations](../../../docs/gpt-image-2-5/live/README.md). These are original prompts authored for this repository, using techniques from the [official 2.5 prompting guide](https://developers.openai.com/api/docs/guides/image-prompting) and [Images guide](https://developers.openai.com/api/docs/guides/image-generation).
 
@@ -13,7 +13,7 @@ gpt-image --version
 
 Inputs are [original deterministic drawings](../assets/gpt-image-2-5/README.md), not photographs or generated results. They make the examples runnable without an external image archive. Use real product/person/style inputs for production work, inspect them, and adjust the traits in the brief accordingly. Unless overridden below, requests use Flare, high quality, 1024×1024, PNG, `n=1`, background auto, fidelity omitted. Generation moderation retains CLI `low`; edits use the API default.
 
-## No. 163 — E1: Brief to product photograph
+## No. 164 — E1: Brief to product photograph
 
 **Observed:** Flare/high: product brief met; 19.29 seconds. [Output](../../../docs/gpt-image-2-5/live/e1-mug.png) · [request and review](../../../docs/gpt-image-2-5/live/e1-mug.json).
 
@@ -23,7 +23,7 @@ Inputs are [original deterministic drawings](../assets/gpt-image-2-5/README.md),
 gpt-image -p 'Create a product photograph for a ceramic studio’s online shop: a handmade cream mug with a cobalt-blue handle beside folded linen. Show uneven glaze and fine clay texture, morning window light from the left, a soft shadow, warm neutral surroundings, and empty space above for website copy. No text inside the image.' -f "$out/e1-mug.png"
 ```
 
-## No. 164 — E2: Subject identity plus style-only reference
+## No. 165 — E2: Subject identity plus style-only reference
 
 **Observed:** Subject markings and style treatment retained; no copied person, chair or lettering. [Output](../../../docs/gpt-image-2-5/live/e2-dog-at-door.png) · [request and review](../../../docs/gpt-image-2-5/live/e2-dog-at-door.json).
 
@@ -35,7 +35,7 @@ gpt-image -i "$refs/dog.png" -i "$refs/pencil-style.png" -p 'Image 1 supplies th
 
 This creates a new composition via the edits endpoint. The style reference is an ordinary uploaded image with a role explained in the prompt.
 
-## No. 165 — E3: Product, lighting/style and approved artwork
+## No. 166 — E3: Product, lighting/style and approved artwork
 
 **Observed:** Product/style/wordmark roles worked and label copy is correct; artwork remains a generative rendering. [Output](../../../docs/gpt-image-2-5/live/e3-bottle-campaign.png) · [request and review](../../../docs/gpt-image-2-5/live/e3-bottle-campaign.json).
 
@@ -47,7 +47,7 @@ gpt-image -i "$refs/bottle.png" -i "$refs/lighting-reference.png" -i "$refs/appr
 
 If exact artwork is a delivery requirement, place the original wordmark with deterministic compositing and disclose that step. This recipe tests generative preservation, not a pixel-exact logo guarantee.
 
-## No. 166 — E4: Correct one price without redesigning
+## No. 167 — E4: Correct one price without redesigning
 
 **Observed:** Correct 18 元 and retained copy/layout; fine texture changed outside the price region. [Output](../../../docs/gpt-image-2-5/live/e4-price-flare-high.png) · [request and review](../../../docs/gpt-image-2-5/live/e4-price-flare-high.json).
 
@@ -58,7 +58,7 @@ price_brief='Change only the price text "16 元" to "18 元". Keep its location,
 gpt-image -i "$refs/tea-poster.png" -p "$price_brief" --size 1152x1536 -f "$out/e4-price-flare-high.png"
 ```
 
-## No. 167 — E5: Retain three successive accepted changes
+## No. 168 — E5: Retain three successive accepted changes
 
 **Observed:** All three edits retained: 18 元, cobalt cap, 9月15日; some cumulative texture change. [Output](../../../docs/gpt-image-2-5/live/e5-new-date.png) · [request and review](../../../docs/gpt-image-2-5/live/e5-new-date.json).
 
@@ -76,7 +76,7 @@ gpt-image -i "$out/e5-blue-cap.png" -p 'Change only the date "9月8日" to "9月
 
 Retain the original plus all three accepted outputs. If an earlier change is lost, correct from the latest usable result with explicit invariants; do not describe the chain as successful.
 
-## No. 168 — E6: Sketch geometry plus separate materials
+## No. 169 — E6: Sketch geometry plus separate materials
 
 **Observed:** Layout relationships and materials retained; added pillow/rug and approximate geometry limit exact architectural use. [Output](../../../docs/gpt-image-2-5/live/e6-room.png) · [request and review](../../../docs/gpt-image-2-5/live/e6-room.json).
 
@@ -88,7 +88,7 @@ gpt-image -i "$refs/room-sketch.png" -i "$refs/materials.png" -p 'Image 1 is the
 
 This uses an uploaded sketch through ordinary references. It does not expose ChatGPT's Sketch UI as a CLI feature.
 
-## No. 169 — E7: Transparent cutout and transparent follow-up
+## No. 170 — E7: Transparent cutout and transparent follow-up
 
 **Observed:** Real alpha retained through the edit; alpha 0–254 means even the product interior is fractionally translucent. [Output](../../../docs/gpt-image-2-5/live/e7-cutout-blue.png) · [request and review](../../../docs/gpt-image-2-5/live/e7-cutout-blue.json).
 
@@ -106,7 +106,7 @@ gpt-image -i "$out/e7-cutout.png" -p 'Change only the cap to cobalt blue. Preser
 
 Keep the original transparent outputs. Any light/dark inspection composites are separate preview files, not replacements. Transparency already existed in Image 2 preview; this demonstrates correct 2.5 use rather than a claim of first introduction.
 
-## No. 170 — E8: Annotation-guided local change and mask alternative
+## No. 171 — E8: Annotation-guided local change and mask alternative
 
 **Observed:** Correct sleeve recolor without annotations; mask variant also worked, with minor changes outside the target. [Output](../../../docs/gpt-image-2-5/live/e8-annotation.png) · [request and review](../../../docs/gpt-image-2-5/live/e8-annotation.json).
 
@@ -124,7 +124,7 @@ gpt-image -i "$refs/coat.png" -m "$refs/sleeve-mask.png" -p 'Recolor the masked 
 
 Compare collateral changes across the full image. Neither method guarantees unchanged pixels outside the target; deterministic compositing is required for that guarantee.
 
-## No. 171 — E9: Exact-copy localization
+## No. 172 — E9: Exact-copy localization
 
 **Observed:** Exact Spanish copy, accents and price retained; headline weight increased. [Output](../../../docs/gpt-image-2-5/live/e9-spanish-poster.png) · [request and review](../../../docs/gpt-image-2-5/live/e9-spanish-poster.json).
 
@@ -134,7 +134,7 @@ Compare collateral changes across the full image. Neither method guarantees unch
 gpt-image -i "$refs/english-poster.png" -p 'Localize only these three poster strings: "MOUNTAIN BREW" becomes "CAFÉ DE MONTAÑA"; "FRESH EVERY DAY" becomes "FRESCO CADA DÍA"; "SEPTEMBER 8" becomes "8 DE SEPTIEMBRE". Preserve price "$16", the MORA wordmark, COLD BREW and 250 ml bottle label, imagery, colors, alignment and hierarchy. Retain the typography character; adjust line breaks only where the Spanish copy needs room. Add no other text.' --size 1152x1536 -f "$out/e9-spanish-poster.png"
 ```
 
-## No. 172 — E10: Two scenes with shared identity and style
+## No. 173 — E10: Two scenes with shared identity and style
 
 **Observed:** A focused correction removed an invented flank marking; final arrival and purchase scenes share identity/style. [Output](../../../docs/gpt-image-2-5/live/e10-arrival-corrected.png) · [request and review](../../../docs/gpt-image-2-5/live/e10-arrival-corrected.json).
 
