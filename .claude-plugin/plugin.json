@@ -1,7 +1,7 @@
 {
   "name": "gpt-image",
-  "description": "OpenAI GPT Image 2 prompt gallery, image prompt library, agentic skill + CLI. Gallery-first prompt patterns, reference-image editing workflows, and a packaged CLI for skill-capable agent runtimes.",
-  "version": "0.2.0",
+  "description": "Generate and edit images with GPT Image 2.5 Flare by default. Prompt-first agent skill and CLI with subject/style/layout references, precise edits, masks, transparent assets, and an attributed historical prompt gallery.",
+  "version": "0.3.0",
   "author": {
     "name": "wuyoscar",
     "url": "https://github.com/wuyoscar"
@@ -10,9 +10,9 @@
   "repository": "https://github.com/wuyoscar/gpt_image_2_skill",
   "license": "MIT",
   "keywords": [
-    "gpt-image-2",
+    "gpt-image-2.5",
     "gpt-image",
-    "gpt-image-2-prompts",
+    "gpt-image-2.5-prompts",
     "openai",
     "image-generation",
     "image-editing",

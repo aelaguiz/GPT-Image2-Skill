@@ -1,0 +1,73 @@
+{
+  "case": "e5-new-date",
+  "started_utc": "2026-09-08T21:01:51.870575+00:00",
+  "sdk_version": "3.9.0",
+  "argv": [
+    "-i",
+    "docs/gpt-image-2-5/live/e5-blue-cap.png",
+    "-p",
+    "Change only the date \"9月8日\" to \"9月15日\". Preserve price \"18 元\", cobalt-blue cap, all remaining copy, bottle details, background and composition.",
+    "--size",
+    "1152x1536",
+    "-f",
+    "docs/gpt-image-2-5/live/e5-new-date.png"
+  ],
+  "post_processing": "none",
+  "visual_review": {
+    "status": "accepted_with_caveat",
+    "findings": "Date becomes 9月15日 while 18 元 and the blue cap survive. Headline, subtitle and bottle label remain correct. Fine texture changes accumulate across the sequence, so content/layout retention succeeds without pixel-identical preservation."
+  },
+  "endpoint": "/v1/images/edits",
+  "request": {
+    "prompt": "Change only the date \"9月8日\" to \"9月15日\". Preserve price \"18 元\", cobalt-blue cap, all remaining copy, bottle details, background and composition.",
+    "file": "docs/gpt-image-2-5/live/e5-new-date.png",
+    "image": [
+      "docs/gpt-image-2-5/live/e5-blue-cap.png"
+    ],
+    "mask": null,
+    "model": "gpt-image-2.5-flare",
+    "size": "1152x1536",
+    "quality": "high",
+    "n": 1,
+    "background": null,
+    "moderation": null,
+    "input_fidelity": null,
+    "output_format": "png",
+    "output_compression": null,
+    "user": null
+  },
+  "input_sha256": {
+    "docs/gpt-image-2-5/live/e5-blue-cap.png": "c7c9d03cd9370bef034cd605751efce116b6f730646732b2ffea34aa75267f24"
+  },
+  "response": {
+    "created": 1788901329,
+    "background": "opaque",
+    "output_format": "png",
+    "quality": "high",
+    "size": "1152x1536",
+    "usage": {
+      "input_tokens": 1506,
+      "input_tokens_details": {
+        "image_tokens": 1452,
+        "text_tokens": 54
+      },
+      "output_tokens": 1629,
+      "total_tokens": 3135,
+      "output_tokens_details": {
+        "image_tokens": 1629,
+        "text_tokens": 0
+      }
+    }
+  },
+  "request_id": "req_9608a21cc25e472ca9cd6600ec75922c",
+  "api_elapsed_seconds": 18.008,
+  "exit_code": 0,
+  "elapsed_seconds": 18.058,
+  "completed_utc": "2026-09-08T21:02:09.928537+00:00",
+  "output_sha256": "549afdba0ecc03366667bf6da81670d0f17ac5eb3edbbb9c936b2761316495a3",
+  "effective_moderation": "API default",
+  "application_attempts": 1,
+  "sdk_automatic_retries": "not separately instrumented",
+  "model_snapshot": "not returned by the Images response",
+  "uncached_rate_estimate_usd": 0.060756
+}

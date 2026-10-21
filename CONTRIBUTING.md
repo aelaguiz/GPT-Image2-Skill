@@ -1,106 +1,54 @@
 # Contributing
 
-Thanks for helping improve the GPT Image 2 Agentic Skill gallery. This repo is intentionally lightweight: a runnable skill/CLI plus a curated prompt gallery with generated examples.
+Contribute a useful prompt, an inspected example, a CLI fix or clearer skill guidance. The current execution default is GPT Image 2.5 Flare. The historical gallery remains attributed source material; do not relabel its outputs as newly generated.
 
-## What to contribute
+## Add a gallery entry
 
-Good contributions usually fall into one of these buckets:
+1. Read the actual prompt and choose a relevant `skills/gpt-image/references/gallery-*.md` category. The split gallery is canonical; README is a selected showcase.
+2. Append a stable number after the current maximum and update `references/gallery.md` ranges/counts. Do not renumber unrelated entries. The catalog currently contains 162 historical entries and 10 live-tested 2.5 recipes, No. 163–172.
+3. Record prompt authorship/source separately from image provenance. “Curated” is an editorial label, not a generating-model record. Preserve an outside prompt's author and source URL; an unknown generating model remains unknown.
+4. Add actual inspected outputs under `docs/<category-slug>/`. Small reusable original or rights-cleared input images belong inside `skills/gpt-image/assets/` with their provenance, so folder-only installs can use them. Mark recipes without outputs **unexecuted** and do not add nonexistent preview links.
+5. Promote a selected rendered example to both `README.md` and `README.zh.md`, with matching input/output paths, model/settings and status. A catalog-only addition does not require duplicating the full entry into both READMEs.
 
-- **New prompt + generated image** for an existing category.
-- **New category** when the prompt does not fit the existing gallery and adds a clearly useful scenario.
-- **Better wording / formatting** in `README.md` and `README.zh.md`.
-- **CLI or skill fixes** under `src/` or `skills/gpt-image/`.
+## Record enough to reproduce and assess
 
-## Gallery entry rules
+For a generated result, include the actual model ID (snapshot when available), UTC date, endpoint, exact prompt, ordered input files/roles, size, quality, background, output format/compression, explicit moderation/fidelity, output path and post-processing. Preserve originals; disclose any crop, compositing or resizing. Record latency, usage and retries when evaluating cost or comparing quality/models. Do not call an unexecuted request a successful demonstration.
 
-When adding or editing a gallery entry:
+For an edit, show the input and output and inspect both the requested change and important unchanged regions. For a sequence, retain each accepted intermediate. For transparency, check real alpha and light/dark edges. For required text, verify every character against supplied copy. For factual diagrams, use verified data and check the relationships; visual polish is not evidence of factual accuracy.
 
-1. Add the entry to both `README.md` and `README.zh.md`.
-2. Keep the same entry order, image path, and numbering in both READMEs.
-3. Put gallery images under:
+Example entry shape (use only fields supported by actual evidence):
 
-   ```text
-   docs/<category-slug>/<short-slug>.png
-   ```
+```markdown
+### No. N · Descriptive title
 
-   Do not add new gallery images directly under `docs/`.
-4. Keep the entry layout consistent:
+Prompt author/source: original contribution, or Author + linked Source.
+Generation: actual model; UTC date; endpoint; ordered inputs and roles.
+Settings: size; quality; n; background; format; other explicit controls.
+Output: existing file and preview, or “Unexecuted recipe; no output.”
+Inspection: observed result and remaining defects.
+Post-processing: none, or the actual disclosed transformation.
 
-   ```md
-   #### No. X · Title
+[Exact prompt and a runnable command with the real input order.]
+```
 
-   <img src="docs/category/short-slug.png" ... />
+## Keep the skill simple
 
-   <sub>Category · `size` · `pixels` · Original</sub>
+Normal generation uses the canonical CLI, not new API wrappers. Teach art direction and reference judgment in prose, with examples loaded when useful. Keep current parameter facts in `model-api.md`; historical source archives should point to it rather than acquiring competing current tables. Update `SKILL.md` and `agents/openai.yaml` together when their contract changes.
 
-   <details>
-   <summary>📝 Prompt · ⚡ CLI · 🐍 OpenAI SDK</summary>
-   ...
-   </details>
-   ```
-
-5. Use one divider (`---`) between entries. Do not leave duplicate dividers.
-6. For original repo-generated examples, footer metadata should end with `Original`.
-7. For outside-source prompts, preserve attribution visibly:
-
-   ```text
-   Author: @handle · Source: [X](https://...)
-   ```
-
-8. Read the actual prompt text before choosing a category. Do not categorize only by filename or title.
-
-## Prompt and image quality
-
-- Prefer prompts that demonstrate a distinct technique: layout, typography, multi-panel composition, reference editing, dense labels, realistic photography, product render, UI mockup, etc.
-- Keep titles clean and natural. Put safety constraints inside the prompt, not in awkward titles.
-- For adult fashion/anime prompts, explicitly keep the prompt tasteful and non-explicit, and avoid minor-coded language.
-- Avoid weak or redundant categories. A category should have a clear visual identity and useful examples.
-
-## Updating counts and index
-
-After adding/removing/moving entries:
-
-1. Renumber all `#### No. ...` headings in both READMEs.
-2. Update the Prompt Gallery index ranges and counts.
-3. Update the top `Gallery size` / `图库规模` count.
-4. Confirm English and Chinese entries have matching image paths in the same order.
-
-Manual counting is fine; no automation tool is required.
-
-## Verification checklist
-
-Before opening a PR, run:
+## Verify the change
 
 ```bash
 git diff --check
-python3 -m py_compile src/gpt_image_cli/cli.py src/gpt_image_cli/__init__.py
+uv run python -m py_compile src/gpt_image_cli/cli.py src/gpt_image_cli/__init__.py skills/gpt-image/scripts/generate.py
+uv run gpt-image --version
 uv run gpt-image --help
+uv run pytest -q
 ```
 
-Recommended README checks:
+For documentation/assets, check local links, stable entry numbers/counts, input ordering, model labels, README parity for newly promoted entries and standalone skill paths. Historical repository-only previews may be absent in a folder-only install; the skill must label them optional. For runtime changes, add focused behavioral coverage only where it catches a wrong request, corrupt output or broken install. Mocked API tests do not validate model quality or account access.
 
-```bash
-rg -n 'docs/example-.*\.(png|jpg|jpeg|webp)' README.md README.zh.md
-rg -n '^### |^#### ' README.md README.zh.md
-```
+A PR should state the concrete behavior changed, the relevant validation and any outstanding live verification. Publishing and global installation are separate actions from local implementation.
 
-Also verify:
+## 中文说明
 
-- No broken local image references.
-- No duplicate anchors.
-- No duplicate dividers between entries.
-- No `###` category heading immediately followed by a `####` entry heading without a blank line.
-- `README.md` and `README.zh.md` have the same number of gallery entries.
-
-## Pull request notes
-
-Please include:
-
-- What changed.
-- Which categories were added or updated.
-- Whether new images are original or adapted from outside prompts.
-- What verification you ran.
-
-## 中文简要说明
-
-贡献新 Prompt / 图片时，请同时更新 `README.md` 和 `README.zh.md`，并保持编号、图片路径、分类顺序一致。图库图片统一放在 `docs/<category-slug>/<short-slug>.png`。原创图片 footer 使用 `Original`；外部来源必须保留 `Author + Source`。提交前请运行上面的验证命令，并检查 Index、总数、图片引用和分隔线。
+完整图库以 `skills/gpt-image/references/gallery-*.md` 为准，README 仅展示精选。新条目使用稳定追加编号，不重排旧条目；只有晋升精选时才同步两种语言的 README。提示词来源与实际生成模型分开记录，缺少输出的示例标记为“未执行”。新生成结果放在 `docs/<category-slug>/`，可复用输入放在技能内 `assets/` 并注明来源。记录真实参数、输入顺序、修改步骤与检查结果；旧图片不重新标为 2.5 输出。提交前运行上述验证命令并检查链接、编号及中英文状态一致性。

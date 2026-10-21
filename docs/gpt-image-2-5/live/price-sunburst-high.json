@@ -1,0 +1,78 @@
+{
+  "case": "price-sunburst-high",
+  "started_utc": "2026-09-08T21:01:10.808682+00:00",
+  "sdk_version": "3.9.0",
+  "argv": [
+    "--model",
+    "gpt-image-2.5-sunburst",
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/tea-poster.png",
+    "-p",
+    "Change only the price text \"16 元\" to \"18 元\". Keep its location, size, alignment and typography treatment. Preserve all other copy, bottle details, cap color, background, composition and colors.",
+    "--quality",
+    "high",
+    "--size",
+    "1152x1536",
+    "-f",
+    "docs/gpt-image-2-5/live/price-sunburst-high.png"
+  ],
+  "post_processing": "none",
+  "visual_review": {
+    "status": "accepted_with_caveat",
+    "findings": "Sunburst high returns the correct 18 元 price and preserves other copy and layout. Minor global texture changes remain; no obvious useful advantage over Flare high on this simple edit."
+  },
+  "endpoint": "/v1/images/edits",
+  "request": {
+    "prompt": "Change only the price text \"16 元\" to \"18 元\". Keep its location, size, alignment and typography treatment. Preserve all other copy, bottle details, cap color, background, composition and colors.",
+    "file": "docs/gpt-image-2-5/live/price-sunburst-high.png",
+    "image": [
+      "skills/gpt-image/assets/gpt-image-2-5/tea-poster.png"
+    ],
+    "mask": null,
+    "model": "gpt-image-2.5-sunburst",
+    "size": "1152x1536",
+    "quality": "high",
+    "n": 1,
+    "background": null,
+    "moderation": null,
+    "input_fidelity": null,
+    "output_format": "png",
+    "output_compression": null,
+    "user": null
+  },
+  "input_sha256": {
+    "skills/gpt-image/assets/gpt-image-2-5/tea-poster.png": "d24c7565891de7827d0e1454c2f2a124817c1c4269fbb54eb5e9c9d30efe4009"
+  },
+  "response": {
+    "created": 1788901292,
+    "background": "opaque",
+    "output_format": "png",
+    "quality": "high",
+    "size": "1152x1536",
+    "usage": {
+      "input_tokens": 1510,
+      "input_tokens_details": {
+        "image_tokens": 1452,
+        "text_tokens": 58
+      },
+      "output_tokens": 1629,
+      "total_tokens": 3139,
+      "output_tokens_details": {
+        "image_tokens": 1629,
+        "text_tokens": 0
+      }
+    }
+  },
+  "request_id": "req_5121dee5af984c72b8a404b765f0ae85",
+  "api_elapsed_seconds": 21.954,
+  "exit_code": 0,
+  "elapsed_seconds": 21.996,
+  "completed_utc": "2026-09-08T21:01:32.805489+00:00",
+  "output_sha256": "6b66b29b1e63cab1a222da05b92163731e5b17d777c3f2e3208e85f9fbc84e37",
+  "effective_moderation": "API default",
+  "application_attempts": 1,
+  "sdk_automatic_retries": "not separately instrumented",
+  "model_snapshot": "not returned by the Images response",
+  "uncached_rate_estimate_usd": 0.060776,
+  "outside_price_mean_absolute_rgb_difference": 1.2898
+}

@@ -1,78 +1,20 @@
-<h1 align="center">GPT Image 2 Prompt Gallery + Agent Skills + CLI</h1>
-<p align="center"><em>OpenAI GPT Image 2 Prompt Gallery、Image Prompt Library、Agent Skills + CLI — 面向支持 Skill 的 Agent 运行时的精选可复用提示词与可运行示例。</em></p>
+<h1 align="center">GPT Image 2.5 · Agent Skill、CLI 与提示词图库</h1>
+<p align="center">默认使用 <strong>GPT Image 2.5 Flare</strong> 生成和编辑图片；可明确选择 Sunburst 进行对比。</p>
+<p align="center"><a href="README.md">English</a> · <a href="README.zh.md"><strong>中文</strong></a></p>
 
-<p align="center">
-  <a href="README.md">English</a> · <a href="README.zh.md"><strong>中文</strong></a>
-</p>
+**版本 0.3.0 · Python ≥3.11 · 文档核对日期 2026-09-08。** `gpt-image` 技能与 CLI 将创作要求及实际参考图片发送到图像 API。默认值为 `gpt-image-2.5-flare`、`high`、`1024x1024`、PNG、1 张；显式 `--model` 会覆盖默认模型。
 
-<p align="center">
-  <a href="https://github.com/wuyoscar/gpt_image_2_skill/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"/></a>
-  <a href="https://github.com/wuyoscar/gpt_image_2_skill/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"/></a>
-  <img src="https://img.shields.io/badge/model-gpt--image--2-purple.svg" alt="模型: gpt-image-2"/>
-  <img src="https://img.shields.io/badge/python-%E2%89%A53.11-blue.svg" alt="Python ≥ 3.11"/>
-</p>
+| 内容 | 入口 |
+|---|---|
+| 生成/编辑技能与统一 CLI | [SKILL.md](skills/gpt-image/SKILL.md)、[API 参数说明](skills/gpt-image/references/model-api.md) |
+| 参考图角色、风格迁移、连续编辑、蒙版和透明背景 | [参考图指南](skills/gpt-image/references/reference-images.md) |
+| 10 个 2.5 示例，附可独立使用的原创输入素材 | [No. 163–172](skills/gpt-image/references/gallery-gpt-image-2-5.md)；已编写，**尚未调用 API 生成结果** |
+| 162 个历史提示词及精选预览 | [完整图库索引](skills/gpt-image/references/gallery.md)；保留原始来源 |
+| 从图片提取提示词的配套技能 | [get-prompt-from-image](skills/get-prompt-from-image/SKILL.md) |
 
-<p align="center">
-  <a href="https://oosmetrics.com/repo/wuyoscar/gpt_image_2_skill"><img src="https://img.shields.io/static/v1?label=oosmetrics&message=Top%201%20Agents&color=8AA399" alt="oosmetrics Top 1 in Agents by velocity"/></a>
-  <a href="https://oosmetrics.com/repo/wuyoscar/gpt_image_2_skill"><img src="https://img.shields.io/static/v1?label=oosmetrics&message=Top%201%20LLMs&color=8798B5" alt="oosmetrics Top 1 in LLMs by velocity"/></a>
-  <a href="https://oosmetrics.com/repo/wuyoscar/gpt_image_2_skill"><img src="https://img.shields.io/static/v1?label=oosmetrics&message=Top%201%20CLI&color=A58B9D" alt="oosmetrics Top 1 in CLI by velocity"/></a>
-</p>
+旧预览属于历史资料，不能用来证明 GPT Image 2.5 的效果。新示例展示正确的请求方式，实际输出及视觉对比仍待执行。详见[迁移计划](docs/gpt-image-2.5-migration-plan.md)和[实施验证记录](docs/gpt-image-2-5/validation.md)。
 
-<p align="center">
-  <a href="docs/assets/gptimage2skill-banner.png"><img src="docs/assets/gptimage2skill-banner.png" alt="GPTImage2Skill 横幅" width="100%"/></a>
-</p>
-
----
-
-## ✨ 一眼看懂
-
-<table border="1" cellspacing="0" cellpadding="6">
-  <tr>
-    <th align="left">项目</th>
-    <th align="left">内容</th>
-  </tr>
-  <tr>
-    <td>图库规模</td>
-    <td><strong>小而能打</strong> · 重质量，不卷数量；README 展示精选样张</td>
-  </tr>
-  <tr>
-    <td>支持形态</td>
-    <td><strong>2 个 Agent Skill + CLI</strong> — Claude Code / Codex、OpenClaw、Hermes Agent，以及其他支持 Skill 的 Agent 运行时</td>
-  </tr>
-  <tr>
-    <td>最后更新</td>
-    <td><strong>2026-09-04</strong></td>
-  </tr>
-  <tr>
-    <td>文档</td>
-    <td><strong>English + 中文</strong></td>
-  </tr>
-</table>
-
-<p align="center">
-  <a href="https://starmapper.bruniaux.com/wuyoscar/GPT-Image2-Skill?utm_source=map-embed&utm_medium=readme&utm_campaign=stargazer-map">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://starmapper.bruniaux.com/api/map-image/wuyoscar/GPT-Image2-Skill?theme=dark" />
-      <source media="(prefers-color-scheme: light)" srcset="https://starmapper.bruniaux.com/api/map-image/wuyoscar/GPT-Image2-Skill?theme=light" />
-      <img alt="GPT-Image2-Skill Stargazer map" src="https://starmapper.bruniaux.com/api/map-image/wuyoscar/GPT-Image2-Skill" width="100%" />
-    </picture>
-  </a>
-</p>
-
----
-
-## 🔎 这个仓库适合什么场景
-
-你可以把它当作 **GPT Image 2 Prompt Gallery**、**Image Prompt Library**、**Text-to-Image Prompt Collection**、**Prompt-to-Image 示例仓库**、**Agent Skill Collection** 和 **gpt-image-2 CLI**。精选示例覆盖科研配图、海报设计、UI Mockup、游戏 HUD、动漫 / 漫画、摄影风格、字体设计、地图导航、纹身设计和参考图编辑。
-
-> 这个项目并不是想收集越多 Prompt 越好。我们更想保留一组有代表性的例子：展示 GPT Image 2 能做什么，以及这些能力应该怎么用。也很感谢大家喜欢这个小 gallery 🫶；后续如果有时间，我也会把背后的自动化 patch / update 流程分享出来。
-
-> [!CAUTION]
-> 对科研配图来说，生成图更适合作为参考、workflow sketch，或者帮助你复刻某种视觉风格。我们**不建议**把 GPT Image 2 生成的图片原封不动放进论文里当正式图使用；在学术表达里，这样很容易造成误导，也算是 bad practice。
-
----
-
-欢迎贡献 — 请查看 [CONTRIBUTING.md](CONTRIBUTING.md)、[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) 和 [SECURITY.md](SECURITY.md)。
+当前资料依据 OpenAI 的[发布说明](https://openai.com/index/introducing-chatgpt-images-2-5/)、[2.5 提示词指南](https://developers.openai.com/api/docs/guides/image-prompting)与[图像 API 指南](https://developers.openai.com/api/docs/guides/image-generation)。两个 2.5 变体均支持生成、编辑、局部重绘以及 `xhigh`/`max` 质量。ChatGPT 的 Sketch、模板与评论属于产品界面；本 CLI 使用普通参考图片与蒙版。
 
 ## 📥 安装
 
@@ -185,10 +127,16 @@ done
 <summary><strong>CLI</strong></summary>
 
 ```bash
-uvx --from git+https://github.com/wuyoscar/gpt_image_2_skill gpt-image -p "a cat astronaut"
+# From this updated checkout; no global installation required
+uv run gpt-image --version
+uv run gpt-image -p "a cat astronaut"
+
+# Remote execution uses the published repository version; verify first
+uvx --from git+https://github.com/wuyoscar/gpt_image_2_skill gpt-image --version
 
 # 或在尚未安装时安装到 PATH
 command -v gpt-image >/dev/null || uv tool install git+https://github.com/wuyoscar/gpt_image_2_skill
+gpt-image --version  # Require 0.3.0+ and the Flare default
 gpt-image -p "a cat astronaut"
 ```
 
@@ -211,7 +159,7 @@ uv tool upgrade gpt-image-cli
 
 按 process env、`.env`、`~/.env` 的顺序读取 `OPENAI_API_KEY`，且不会覆盖已经设置好的环境变量。
 
-> **Agent 与 API Key 提醒。** 我们发现 Codex 其实自带生成 Image 的 skill，但它是黑盒的，无法在这里修改；Codex 用户如果更想走内置能力，可以自行切换。也感谢相关 issue 里提到的方法：如果你不想让 agent accidentally 调用你的 OpenAI API Key，直接在调用本地 CLI/Skill 前运行 `unset OPENAI_API_KEY` 即可。
+> **凭据与宿主工具。** `unset OPENAI_API_KEY` 不会禁用 `.env` 或 `~/.env` 读取。如果不希望使用本地 API Key，就不要调用此 CLI。宿主管理的图像工具可能使用其他凭据，也可能不提供 Flare/Sunburst 选择；以其实际运行时接口为准。
 
 ---
 
@@ -219,7 +167,7 @@ uv tool upgrade gpt-image-cli
 
 ### 🆕 Update：从图片获取 Prompt
 
-感谢 [@LunarXuan](https://github.com/LunarXuan) 贡献 **Get Prompt from Image**。把图片交给具备视觉能力的 Agent，这个 Skill 会提取可复用的 Prompt，再交给 `gpt-image` 或其他生图工具。Gemini 3.8 Flash、GPT-5.6 等模型支持视觉能力；每次生成会有一定随机性，但整体效果通常可以还原得很好。
+感谢 [@LunarXuan](https://github.com/LunarXuan) 贡献 **Get Prompt from Image**。把图片交给具备视觉能力的 Agent，这个 Skill 会提取可复用的 Prompt，再交给 `gpt-image` 或其他生图工具。请使用具备视觉能力的运行时。提取的提示词描述可见特征；重建图片仍需单独发送图像请求并检查结果。
 
 上传图片后，可以使用 slash command、`$get-prompt-from-image`，或者直接用自然语言调用：
 
@@ -266,119 +214,107 @@ photorealistic, 3D render, flat vector style, pure cel shading, watercolor bleed
 
 安装后，下面每个图库条目都可以复制粘贴为 `gpt-image -p "…"`，也可以在任何支持 Skill 的 Agent 运行时里用自然语言请求，例如：*“生成技能图库中的波士顿春季海报”*。
 
-### 文本 → 图片
+### 使用默认模型，或明确选择 Sunburst
 
 ```bash
-gpt-image -p "晚上10点的逼真便利店" --size 1k --quality high -f store.png
+gpt-image --version  # 0.3.0+，default: gpt-image-2.5-flare
+gpt-image -p 'A handmade cream mug with a cobalt handle on folded linen. Morning window light, visible glaze texture, empty space above, no text.' -f mug.png
+gpt-image --model gpt-image-2.5-sunburst -p 'YOUR BRIEF' --quality xhigh -f sunburst.png
 ```
 
-底层实现：`POST /v1/images/generations`，使用 `model=gpt-image-2`。
+没有 `-i` 时调用 `POST /v1/images/generations`。只要提供 `-i` 就调用 `POST /v1/images/edits`，包括利用参考图创建新构图。文件会按参数顺序实际上传。
 
-### 文字 + 参考图像 → 图像（编辑）
+### 区分主体参考与风格参考
+
+先查看实际图片，再确定需要保留或借鉴的内容：
 
 ```bash
-# 单参考图编辑 / 重风格化
-gpt-image -p "让它成为一个下大雪的冬日晚景" \
-  -i chess.png --quality high -f chess-winter.png
+gpt-image -i subject.png -i style.png -p 'Image 1 supplies the subject and its recognizable markings. Image 2 supplies only its pencil contours, ochre/blue palette and paper texture. Illustrate the subject from Image 1 beside a front door. Exclude Image 2’s people and lettering.' -f subject-restyled.png
 
-# 多参考图编辑：edits 端点可以同时接收多张输入图
-gpt-image -p "把第 2 张图里的狗放到第 1 张图的女人旁边，匹配相同的光线、构图和背景，不要改动其他任何内容。" \
-  -i woman.png -i dog.png --size portrait --quality medium -f woman-with-dog.png
+# 蒙版与第一张输入均为相同尺寸的 PNG；蒙版必须有 alpha 通道。
+gpt-image -i photo.png -m sky-mask.png -p 'Replace the masked sky with an aurora; preserve the landscape and match the lighting.' -f aurora.png
 
-# 基于掩码的修补：不透明部分 = 保留，透明部分 = 重新生成
-gpt-image -p "将天空替换为极光" \
-  -i photo.jpg -m sky_mask.png -f aurora.png
+# 透明背景需要 API 参数，不能只写在提示词里。
+gpt-image -i bottle.png -p 'Extract the complete bottle onto a fully transparent background. Preserve the label and edges; no backdrop or ground shadow.' --background transparent --format png -f bottle-cutout.png
 ```
 
-底层实现：`POST /v1/images/edits`（多部分表单），这是 OpenAI Cookbook 中的官方接口。`gpt-image-2` 支持 `image`、`mask`、`prompt`、`size`、`quality`、`background`、`output_format` 和 `n`。支持多个 `-i` 输入以进行多参考图像编辑。
+风格参考就是普通 `-i` 图片，通过提示词明确其角色。蒙版是编辑指引，不能保证范围外像素完全不变。连续编辑时，上传最近一次已接受的结果，明确保留之前的修改，并使用新文件名。透明图片的后续编辑仍需 `--background transparent`。更多示例与检查标准见[参考图指南](skills/gpt-image/references/reference-images.md)。
 
-### 参数（完整）
+### CLI 参数
 
-<details>
-<summary><strong>显示完整参数参考</strong></summary>
+| 参数 | 取值 / 行为 | 默认值 |
+|---|---|---|
+| `-p, --prompt` | 必填、非空、最多 32,000 字符 | — |
+| `-f, --file` | PNG/JPEG/WebP 输出路径；无扩展名时自动补齐 | 当前目录，若存在 `fig/` 则使用该目录；时间戳命名 |
+| `--model` | 明确的模型 ID；Sunburst 为 `gpt-image-2.5-sunburst` | `gpt-image-2.5-flare` |
+| `-i, --image` | 可重复、有序，最多 16 张 PNG/JPEG/WebP，每张小于 50 MB | 无 |
+| `-m, --mask` | 第一张 PNG 的同尺寸 PNG alpha 蒙版；透明区域表示编辑 | 无 |
+| `--size` | `auto`、`WIDTHxHEIGHT` 或下方快捷值 | `1024x1024` |
+| `--quality` | `auto`、`low`、`medium`、`high`、`xhigh`、`max` | `high`；API 默认 `auto` |
+| `-n, --n` | 同一请求的 1–10 个变体；多张输出后缀为 `_0`、`_1` 等 | 1 |
+| `--background` | `auto`、`opaque`、`transparent`，生成和编辑均可用 | API `auto` |
+| `--format` | `png`、`jpeg`、`webp`；与扩展名冲突时报错 | 从扩展名推断，否则 PNG |
+| `--compression` | 0–100，仅 JPEG/WebP | 不传 |
+| `--moderation` | `auto`、`low`；编辑通过 SDK `extra_body` 传递显式值 | 生成 `low`；编辑使用 API 默认 |
+| `--input-fidelity` | 可选编辑参数 `low`/`high`；Image 2 精确别名拒绝，2.5 显式值原样传递 | 不传；不臆测 2.5 专属默认行为 |
+| `--user` / `--version` | 可选最终用户标识 / 显示实际后端版本及默认模型 | — |
 
-| 标志 | 取值 | 默认值 | 适用范围 | 备注 |
-|---|---|---|---|---|
-| `-p, --prompt` | 字符串 | — 必需 | 两者 | 完整的提示文本。 |
-| `-f, --file` | 路径 | `./fig/YYYY-MM-DD-HH-MM-SS-<slug>.png` | 两者 | 明确输出路径。 |
-| `-i, --image` | 路径（可重复） | — | 编辑 | 存在时走 `/v1/images/edits` 路由。 |
-| `-m, --mask` | 路径（PNG，带alpha通道） | — | 编辑 | 不透明 = 保留，透明 = 重新生成。需要 `-i`。 |
-| `--input-fidelity` | `low` · `high` | — | 编辑 | 在 `gpt-image-1`/`1.5` 支持；`gpt-image-2` 会拒绝这个参数，所以 CLI 会在本地直接丢弃它。 |
-| `--size` | `1k` · `2k` · `4k` · `portrait` · `landscape` · `square` · `wide` · `tall` · 字面量如 `1024x1024` 等 | `1024x1024` | 两者 | 字面量必须为16像素倍数，最大边3840，比例限制3:1，像素总数介于655k–8.3M之间。 |
-| `--quality` | `auto` · `low` · `medium` · `high` | `high` | 两者 | 这是一个实用预算调节：`low` 用于便宜的草稿/大规模生成，`medium` 用于正常探索，`high` 用于最终以文本为主或面向发布的资源。 |
-| `-n, --n` | 整数 | 1 | 两者 | 批量生成。`n>1` 时文件名后缀依次为 `_0`、`_1`、… |
-| `--background` | `auto` · `opaque` | API 默认 | 生成 | `opaque` 禁用透明度。 |
-| `--moderation` | `auto` · `low` | `low` | 生成 | 这里默认用 `low`，更适合广泛探索提示词；如果你想回到更严格的 API 侧默认行为，就手动切到 `auto`。 |
-| `--format` | `png` · `jpeg` · `webp` | `png` | 两者 | 响应编码格式。 |
-| `--compression` | 0–100 | — | 两者 | 仅适用于 JPEG/WebP。 |
+`1k`/`square` → 1024×1024；`portrait` → 1024×1536（2:3）；`landscape` → 1536×1024（3:2）；`wide` → 2048×1152（16:9）。`2k` → 2048×2048；`4k` → 3840×2160；`tall` → 2160×3840。最后三项均超过实验性像素面积阈值。
 
-</details>
+2.5 的边长须为 16 的倍数且不超过 3840，长短边比不超过 3:1，总像素为 655,360–8,294,400。超过 3,686,400 像素属于实验范围。精确 3:4 海报用 `--size 1152x1536`；`portrait` 是 2:3。历史提示词中的“1290×2796 手机屏幕”可以描述画面里的设备，但不是有效 API 输出尺寸。PNG/WebP 支持透明通道，JPEG 不支持。
 
-### 预算 / 质量指南
+CLI 在读取凭据前校验参数，保留输入顺序，关闭上传文件，并在写入前检查输出编码、尺寸及所需 alpha。文字、身份、编辑范围与边缘仍需视觉检查。成功时 stdout 只输出文件路径。退出码：`0` 成功，`1` API/输出错误，`2` 参数/配置错误。API 失败不会静默切换模型。
 
-这里没有单独的 `budget` 标志——使用 `--quality` 作为预算调节。
+### 质量、费用与 SDK
 
-- `low` = 便宜的草稿 / 收集 / 多变体
-- `medium` = 正常探索 / 风格试探
-- `high` = 最终海报，中文文本，图表，论文图形，横幅
+对比 Image 2 与 Flare，或 Flare 与 Sunburst 时，保持提示词、参考图顺序、显式质量、尺寸及格式一致。先沿用 `high`；清晰提示词仍未满足要求时，可先比较 `xhigh` 或 `max`，再考虑增加提示内容。结果达标后，若需优化延迟或费用，再评估较低质量。任何设置都不保证文字绝对准确。[2.5 示例](skills/gpt-image/references/gallery-gpt-image-2-5.md#controlled-quality-and-model-comparisons)提供受控对比命令。
 
-如果你要生成数十个候选项，先从 `low` 开始，仅对决选的最终稿使用 `high` 重新运行。
+两个 2.5 变体公布的标准 token 单价相同，但实际用量可能不同。比较每张验收通过图片的耗时与费用时，应计入参考图和重试；不能直接沿用 Image 2 的每图价格表。见[带核对日期的价格与 API 说明](skills/gpt-image/references/model-api.md)。
 
-### 从画廊 Prompt → CLI / SDK
-
-下面每个条目**只给出提示词加一行元数据**（`"size"` · `"quality"` · 来源）。CLI 与 SDK 的调用永远按同样的方式装配——这里示范一次，后面的条目就不再重复这两段样板。以 `"portrait"` · `"high"` 条目为例：
-
-```bash
-# CLI
-gpt-image -p "<条目中的提示词>" --size portrait --quality high -f out.png
-```
+CLI 使用已验证请求序列化的 OpenAI Python SDK ≥3.9.0。应用集成示例：
 
 ```python
-# OpenAI SDK —— size 传字面像素值；CLI 的 portrait 简写对应 1024x1536
 from openai import OpenAI
 client = OpenAI()
 result = client.images.generate(
-    model="gpt-image-2",
-    prompt="<条目中的提示词>",
-    size="1024x1536",
+    model="gpt-image-2.5-flare",
+    prompt="YOUR BRIEF",
+    size="1152x1536",
     quality="high",
+    output_format="png",
 )
 ```
 
-遇到需要参考图的编辑任务，在 CLI 上追加 `-i ref.png`（可重复）以及可选的 `-m mask.png`，或把 SDK 调用换成 `client.images.edit(...)` 并传 `image=[open(p, "rb") for p in refs]`。其余参数与 generate 完全一致。
-
-退出代码：`0` 成功 · `1` API/拒绝错误（完整响应体打印到 stderr） · `2` 参数错误或缺失 `OPENAI_API_KEY`。
+技能日常执行使用现成 CLI。需要保留对话图像状态的应用可用 Responses 图像生成工具；显式图像模型选择与费用区别见 [model-api.md](skills/gpt-image/references/model-api.md#responses-api-and-host-tools)。
 
 </details>
 
-### 📖 提示词基础
+### 2.5 提示词写法
 
-<details>
-<summary><strong>显示提示词笔记</strong></summary>
+1. 先说明用途与主体，再写影响画面的具体细节。按需用自然语言或标签，不强制 JSON、关键词数量或先搜索图库。
+2. 必须出现的文字、价格、日期逐字引用。布局重要时说明层级和实际画布比例；事实数据先核实再绘图。
+3. 检查参考图，按附件顺序明确主体、风格、布局或编辑底图角色；说明需要保留什么。
+4. 根据创作要求检查结果。针对明确问题修正，保留已接受的修改，并固定其他条件比较质量设置。
 
-摘自 OpenAI 的[官方 GPT Image 提示指南](https://github.com/openai/openai-cookbook/blob/main/examples/multimodal/image-gen-models-prompting-guide.ipynb) （本地也存档于 [`skills/gpt-image/references/openai-cookbook.md`](skills/gpt-image/references/openai-cookbook.md) — 当你询问参数语义、编辑、UI 原型、推介幻灯片、科学视觉、虚拟试穿、广告牌模型或翻译编辑时，技能会按需加载）：
+[提示词创作指南](skills/gpt-image/references/craft.md)保留产品、字体、图解、UI 和多格画面的实用美术指导。[旧 cookbook](skills/gpt-image/references/openai-cookbook.md)作为保留来源的历史存档，不再作为当前参数依据。
 
-1. **先结构，再目标。** 使用一致的顺序：`背景/场景 → 主体 → 关键细节 → 限制条件`，并**说明预期用途**（广告、UI 原型、信息图），以便模型选择正确模式和润色等级。
-2. **任何格式都可；一致性更重要。** 简短提示、描述段落、JSON 风格结构、指令风格提示和标签式提示均可。生产中建议使用易快速浏览的模板，而非巧妙语法。
-3. **具体 + 质量线索。** 要具体说明材料、形状、纹理和媒介（照片、水彩、3D 渲染）。仅在必要时添加针对性的质量线索：*胶片颗粒*、*纹理笔触*、*微距细节*。要实现照片级真实感，直接写 *“photorealistic”*；*“真实照片”*、*“用真实相机拍摄”* 和 *“iPhone 照片”* 也有帮助。
-4. **将必需文本用引号括起来。** 任何必须出现在图片中的文本 —— 标语、价格、汉字 —— 应用直引号括起。不要在提示中换种说法。
-5. **提前选择宽高比。** 提示前先确定 1:1 / 3:4 / 4:3 / 9:16 / 16:9 / 3:1。并在提示文本中强化，而不仅仅是用 `--size` 。
-6. **一主角，配角辅助。** 复杂场景最好有一个明显的主体，其它作为配角细节表现。
-7. **文本内嵌、密集图表、小标签和多面板布局用 `quality="high"`。** 中档会明显降低效果。
+### 新增 2.5 示例：输入已提供，输出待生成
 
-**这个 skill 提供四个本地 reference surface：**
-- [`skills/gpt-image/references/gallery.md`](skills/gpt-image/references/gallery.md) — 轻量级路由索引，用来为拆分后的 Reference Gallery Atlas 选择 category；它本身**不是**完整 Prompt dump。
-- `skills/gpt-image/references/gallery-*.md` — 每个 category 一个文件，只在相关任务中加载，例如 [`gallery-product-and-food.md`](skills/gpt-image/references/gallery-product-and-food.md)、[`gallery-ui-ux-mockups.md`](skills/gpt-image/references/gallery-ui-ux-mockups.md)、[`gallery-research-paper-figures.md`](skills/gpt-image/references/gallery-research-paper-figures.md)。这样既能复用 Skill 的参考图库，又不会撑爆上下文。
-- [`skills/gpt-image/references/craft.md`](skills/gpt-image/references/craft.md) — 扩展后的 19 节 Prompt Craft 清单，覆盖 gallery-first 使用方式、JSON/config-style Prompt、多面板排版、UI 规格、数据/图表语法、编辑不变量、参考图工作流、密集文本和分类 mini-schema。
-- [`skills/gpt-image/references/openai-cookbook.md`](skills/gpt-image/references/openai-cookbook.md) — OpenAI Cookbook 的逐字 Markdown 捕获（1004 行），包括权威的参数覆盖表和所有第4/5节用例示例。
+| 示例 | 内容 |
+|---|---|
+| 主体 + 风格 | [No. 164](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-164--e2-subject-identity-plus-style-only-reference)：保留小狗身份，另用插画风格参考 |
+| 精确编辑 + 连续保留修改 | [No. 166–167](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-166--e4-correct-one-price-without-redesigning)：价格、瓶盖颜色、日期 |
+| 真实透明输出 | [No. 169](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-169--e7-transparent-cutout-and-transparent-follow-up)：alpha 抠图及瓶盖改色 |
 
-</details>
+完整示例还涵盖产品/风格/Logo、多参考草图与材质、标注/蒙版、本地化和统一系列。十二张[起始素材](skills/gpt-image/assets/gpt-image-2-5/README.md)均为原创确定性绘图，不是 2.5 生成结果。在完成 API 调用及视觉检查之前，这些示例均标记为**未执行**。
 
 ---
 
 <a id="gallery-index"></a>
 
 ## 🎨 提示词精选展示
+
+> 历史精选：提示词与预览保留原始来源，未记录的生成模型保持未知；这些图片不重新标为 2.5 输出。提示词中的尺寸可能描述构图而不是 API 画布，重新运行时请以本页当前尺寸表为准。
 
 > **关于这些提示词。** README 里展示的是一组有代表性的 prompt 及其对应生成图。完整 Reference Gallery 包含完整的精选 prompt / image atlas，按分类整理在 [`skills/gpt-image/references/gallery.md`](skills/gpt-image/references/gallery.md) 和对应的 `skills/gpt-image/references/gallery-*.md` 文件中。
 >

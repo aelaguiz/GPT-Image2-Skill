@@ -24,6 +24,9 @@ __pycache__/
 !docs/**/*.jpeg
 !docs/**/*.webp
 
+# Portable, original reference fixtures
+!skills/gpt-image/assets/**/*.png
+
 # macOS
 .DS_Store
 

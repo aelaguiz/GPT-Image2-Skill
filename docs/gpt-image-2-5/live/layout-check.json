@@ -1,0 +1,67 @@
+{
+  "case": "layout-check",
+  "started_utc": "2026-09-08T21:04:11.932989+00:00",
+  "sdk_version": "3.9.0",
+  "argv": [
+    "-p",
+    "Create three equal columns on cream paper with exactly these labels in left-to-right order: \"1. Grind\", \"2. Brew\", \"3. Serve\". One coffee-related icon above each label, exactly two arrows connecting adjacent columns and both pointing right. Dark-brown lines and one muted-blue accent. No other text.",
+    "--size",
+    "landscape",
+    "-f",
+    "docs/gpt-image-2-5/live/layout-check.png"
+  ],
+  "post_processing": "none",
+  "visual_review": {
+    "status": "accepted",
+    "findings": "Exactly three ordered labels: 1. Grind, 2. Brew, 3. Serve. Each has a coffee-related icon above; exactly two arrows point right between adjacent columns. Brown/blue palette on cream background, no extra text."
+  },
+  "endpoint": "/v1/images/generations",
+  "request": {
+    "prompt": "Create three equal columns on cream paper with exactly these labels in left-to-right order: \"1. Grind\", \"2. Brew\", \"3. Serve\". One coffee-related icon above each label, exactly two arrows connecting adjacent columns and both pointing right. Dark-brown lines and one muted-blue accent. No other text.",
+    "file": "docs/gpt-image-2-5/live/layout-check.png",
+    "image": null,
+    "mask": null,
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "high",
+    "n": 1,
+    "background": null,
+    "moderation": null,
+    "input_fidelity": null,
+    "output_format": "png",
+    "output_compression": null,
+    "user": null
+  },
+  "input_sha256": {},
+  "response": {
+    "created": 1788901465,
+    "background": "opaque",
+    "output_format": "png",
+    "quality": "high",
+    "size": "1536x1024",
+    "usage": {
+      "input_tokens": 71,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 71
+      },
+      "output_tokens": 1372,
+      "total_tokens": 1443,
+      "output_tokens_details": {
+        "image_tokens": 1372,
+        "text_tokens": 0
+      }
+    }
+  },
+  "request_id": "req_5d55a0bcab8c47ce90f5095abc40c19d",
+  "api_elapsed_seconds": 13.772,
+  "exit_code": 0,
+  "elapsed_seconds": 13.812,
+  "completed_utc": "2026-09-08T21:04:25.744975+00:00",
+  "output_sha256": "0a704c30c08f4fcf747c1a7f755df5c76f057a9db647102f99836f70f4504073",
+  "effective_moderation": "low",
+  "application_attempts": 1,
+  "sdk_automatic_retries": "not separately instrumented",
+  "model_snapshot": "not returned by the Images response",
+  "uncached_rate_estimate_usd": 0.041515
+}

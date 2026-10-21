@@ -8,9 +8,14 @@
     {
       "name": "gpt-image",
       "source": "./",
-      "description": "OpenAI GPT Image 2 skill — gallery-first prompt patterns across Chinese typography, research figures, games, anime, posters, and more. Guides agents to search references, confer when useful, then call the packaged CLI.",
+      "description": "GPT Image 2.5 Flare by default: packaged generation/editing CLI, explicit reference roles, style transfer, chained edits, masks, alpha, and an attributed prompt gallery.",
       "homepage": "https://github.com/wuyoscar/gpt_image_2_skill",
-      "keywords": ["gpt-image-2", "openai", "image-generation", "prompt-library"]
+      "keywords": [
+        "gpt-image-2.5",
+        "openai",
+        "image-generation",
+        "prompt-library"
+      ]
     }
   ]
 }

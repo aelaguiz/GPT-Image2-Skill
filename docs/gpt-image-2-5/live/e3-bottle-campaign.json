@@ -1,0 +1,79 @@
+{
+  "case": "e3-bottle-campaign",
+  "started_utc": "2026-09-08T20:59:19.783715+00:00",
+  "sdk_version": "3.9.0",
+  "argv": [
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/bottle.png",
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/lighting-reference.png",
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/approved-wordmark.png",
+    "-p",
+    "Image 1 supplies the bottle design: preserve silhouette, cap, proportions and label layout. Render its body as matte cream ceramic. Image 2 supplies only warm side light, pale stone and muted olive shadows. Image 3 supplies the approved MORA wordmark. Create a campaign photograph of this bottle on pale stone, centered with generous space above. Use Image 3’s wordmark on the label with the exact additional copy \"COLD BREW\" and \"250 ml\". Do not copy Image 2’s cup, typography or layout.",
+    "-f",
+    "docs/gpt-image-2-5/live/e3-bottle-campaign.png"
+  ],
+  "post_processing": "none",
+  "visual_review": {
+    "status": "accepted",
+    "findings": "Three-role composition produces a cream ceramic bottle on pale stone with warm side light and olive shadows. MORA, COLD BREW and 250 ml are correct; no cup or LIGHT STUDY lettering transfers. Product proportions remain recognizable. Wordmark is a generative rendering, not a pixel-exact artwork composite."
+  },
+  "endpoint": "/v1/images/edits",
+  "request": {
+    "prompt": "Image 1 supplies the bottle design: preserve silhouette, cap, proportions and label layout. Render its body as matte cream ceramic. Image 2 supplies only warm side light, pale stone and muted olive shadows. Image 3 supplies the approved MORA wordmark. Create a campaign photograph of this bottle on pale stone, centered with generous space above. Use Image 3’s wordmark on the label with the exact additional copy \"COLD BREW\" and \"250 ml\". Do not copy Image 2’s cup, typography or layout.",
+    "file": "docs/gpt-image-2-5/live/e3-bottle-campaign.png",
+    "image": [
+      "skills/gpt-image/assets/gpt-image-2-5/bottle.png",
+      "skills/gpt-image/assets/gpt-image-2-5/lighting-reference.png",
+      "skills/gpt-image/assets/gpt-image-2-5/approved-wordmark.png"
+    ],
+    "mask": null,
+    "model": "gpt-image-2.5-flare",
+    "size": "1024x1024",
+    "quality": "high",
+    "n": 1,
+    "background": null,
+    "moderation": null,
+    "input_fidelity": null,
+    "output_format": "png",
+    "output_compression": null,
+    "user": null
+  },
+  "input_sha256": {
+    "skills/gpt-image/assets/gpt-image-2-5/bottle.png": "4e1f0110b0c2d33f5f8918c3c90959728ac17f69681728783320e76d44d3c32b",
+    "skills/gpt-image/assets/gpt-image-2-5/lighting-reference.png": "ddef849c56ca27ee290b8d701e741b9771a7fa375423aa3875e493f2d1c4d03f",
+    "skills/gpt-image/assets/gpt-image-2-5/approved-wordmark.png": "cb2d3461178a30d7932c0cd8e888696375157a7b5fd97af358bc92d672cd4347"
+  },
+  "response": {
+    "created": 1788901180,
+    "background": "opaque",
+    "output_format": "png",
+    "quality": "high",
+    "size": "1024x1024",
+    "usage": {
+      "input_tokens": 3217,
+      "input_tokens_details": {
+        "image_tokens": 3072,
+        "text_tokens": 145
+      },
+      "output_tokens": 1756,
+      "total_tokens": 4973,
+      "output_tokens_details": {
+        "image_tokens": 1756,
+        "text_tokens": 0
+      }
+    }
+  },
+  "request_id": "req_320b0509d8da499f8799dbd6d039a0c5",
+  "api_elapsed_seconds": 21.39,
+  "exit_code": 0,
+  "elapsed_seconds": 21.428,
+  "completed_utc": "2026-09-08T20:59:41.211680+00:00",
+  "output_sha256": "4d620908cea49c843b29433096c94538de08eb66bee113538ef75411fbc3ffec",
+  "effective_moderation": "API default",
+  "application_attempts": 1,
+  "sdk_automatic_retries": "not separately instrumented",
+  "model_snapshot": "not returned by the Images response",
+  "uncached_rate_estimate_usd": 0.077981
+}

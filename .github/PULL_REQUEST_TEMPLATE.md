@@ -1,32 +1,26 @@
-## Summary
+## Change
 
-<!-- What changed? Keep it short and concrete. -->
+<!-- Name the concrete problem and resulting behavior. -->
 
-## Type of change
+## Gallery / skill checks
 
-- [ ] Prompt / gallery entry
-- [ ] Image asset / docs organization
-- [ ] CLI / skill behavior
-- [ ] Documentation / wording
-- [ ] Maintenance / community files
+- [ ] Added/updated the canonical reference category and stable index numbering where applicable
+- [ ] Separated prompt attribution from actual model, settings, inputs and output provenance; unexecuted recipes labeled
+- [ ] Kept portable input assets inside the skill; preview links target existing files
+- [ ] Updated both READMEs when promoting a selected example or changing current behavior
+- [ ] Updated skill metadata and current API guidance where their contract changed
 
-## Gallery checklist
+## Validation
 
-If this PR changes the prompt gallery:
+<!-- Relevant tests/checks and actual results. Distinguish mocked requests, live API runs and visual inspection. -->
 
-- [ ] Updated both `README.md` and `README.zh.md`
-- [ ] Kept English/Chinese entry order and image paths aligned
-- [ ] Placed gallery images under `docs/<category-slug>/<short-slug>.png`
-- [ ] Updated gallery numbering, index ranges, and top gallery count
-- [ ] Used `Original` for repo-generated images or preserved `Author + Source` for outside-source prompts
-- [ ] Checked for duplicate dividers and broken local image refs
+```text
+git diff --check
+uv run gpt-image --version
+uv run gpt-image --help
+uv run pytest -q
+```
 
-## Verification
+## Remaining limitations
 
-- [ ] `git diff --check`
-- [ ] `python3 -m py_compile src/gpt_image_cli/cli.py src/gpt_image_cli/__init__.py`
-- [ ] `uv run gpt-image --help`
-
-## Notes
-
-<!-- Anything reviewers should know: attribution, rejected alternatives, visual quality caveats, etc. -->
+<!-- Only material unresolved issues, including missing live image verification. -->

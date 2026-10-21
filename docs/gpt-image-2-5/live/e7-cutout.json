@@ -1,0 +1,84 @@
+{
+  "case": "e7-cutout",
+  "started_utc": "2026-09-08T20:59:18.589440+00:00",
+  "sdk_version": "3.9.0",
+  "argv": [
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/bottle.png",
+    "-p",
+    "Extract the bottle from Image 1 onto a fully transparent background. Preserve its drawing style, cap, geometry, label text and colors. Keep the complete silhouette with clean edges. No backdrop, painted checkerboard, extra objects or ground shadow.",
+    "--background",
+    "transparent",
+    "--format",
+    "png",
+    "-f",
+    "docs/gpt-image-2-5/live/e7-cutout.png"
+  ],
+  "post_processing": "none",
+  "visual_review": {
+    "status": "accepted_with_caveat",
+    "findings": "Actual transparency, complete silhouette, no backdrop/ground shadow, correct MORA / COLD BREW / 250 ml. Light/dark composites show usable edges. Alpha ranges 0–254, so even the most opaque pixel is fractionally translucent; keep this observation for workflows requiring fully opaque product interiors."
+  },
+  "endpoint": "/v1/images/edits",
+  "request": {
+    "prompt": "Extract the bottle from Image 1 onto a fully transparent background. Preserve its drawing style, cap, geometry, label text and colors. Keep the complete silhouette with clean edges. No backdrop, painted checkerboard, extra objects or ground shadow.",
+    "file": "docs/gpt-image-2-5/live/e7-cutout.png",
+    "image": [
+      "skills/gpt-image/assets/gpt-image-2-5/bottle.png"
+    ],
+    "mask": null,
+    "model": "gpt-image-2.5-flare",
+    "size": "1024x1024",
+    "quality": "high",
+    "n": 1,
+    "background": "transparent",
+    "moderation": null,
+    "input_fidelity": null,
+    "output_format": "png",
+    "output_compression": null,
+    "user": null
+  },
+  "input_sha256": {
+    "skills/gpt-image/assets/gpt-image-2-5/bottle.png": "4e1f0110b0c2d33f5f8918c3c90959728ac17f69681728783320e76d44d3c32b"
+  },
+  "response": {
+    "created": 1788901174,
+    "background": "transparent",
+    "output_format": "png",
+    "quality": "high",
+    "size": "1024x1024",
+    "usage": {
+      "input_tokens": 1088,
+      "input_tokens_details": {
+        "image_tokens": 1024,
+        "text_tokens": 64
+      },
+      "output_tokens": 1756,
+      "total_tokens": 2844,
+      "output_tokens_details": {
+        "image_tokens": 1756,
+        "text_tokens": 0
+      }
+    }
+  },
+  "request_id": "req_85bf84e9013949bc9bf4a1d77d47c30d",
+  "api_elapsed_seconds": 15.934,
+  "exit_code": 0,
+  "elapsed_seconds": 15.965,
+  "completed_utc": "2026-09-08T20:59:34.554988+00:00",
+  "output_sha256": "11d83f66f73873ff64b0f33835df6be4413db747f5248e70caab3f765f4cfa0d",
+  "effective_moderation": "API default",
+  "application_attempts": 1,
+  "sdk_automatic_retries": "not separately instrumented",
+  "model_snapshot": "not returned by the Images response",
+  "alpha": {
+    "extrema": [
+      0,
+      254
+    ],
+    "fully_transparent_pixels": 839780,
+    "fully_opaque_pixels": 0,
+    "total_pixels": 1048576
+  },
+  "uncached_rate_estimate_usd": 0.061192
+}

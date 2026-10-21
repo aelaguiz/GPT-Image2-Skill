@@ -1,5 +1,9 @@
 # 📷 Photography
 
+> **Historical gallery entry source.** Original prompts, numbering and attribution are retained. Preview images and generation settings are historical; an unrecorded generating model remains unknown. Repository-relative previews are optional archive assets and may be absent in standalone skill installs. Use [model-api.md](model-api.md) for current 2.5 settings and attach your own actual files for reference edits.
+
+> **Current adaptation note:** For No. 66’s strict 2:1 panorama use `--size 2048x1024` in a current request. The quoted 4096×2048 example exceeds the current 3840 edge limit, and `wide` is 16:9. Inspect the wrap seam; a prompt does not guarantee seamless projection.
+
 Range: No. 63–66 · Count: 4
 
 Load this file only when the request matches this category. For cross-cutting writing rules, pair it with `craft.md`.

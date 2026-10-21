@@ -1,90 +1,22 @@
-<h1 align="center">GPT Image 2 Prompt Gallery + Agent Skills + CLI</h1>
-<p align="center"><em>OpenAI GPT Image 2 prompt gallery, image prompt library, agent skills, and CLI — curated, copy-paste prompts and runnable examples for skill-capable agents.</em></p>
+<h1 align="center">GPT Image 2.5 · Agent Skill, CLI & Prompt Gallery</h1>
+<p align="center">Generate and edit with <strong>GPT Image 2.5 Flare by default</strong>; choose Sunburst explicitly for comparison.</p>
+<p align="center"><a href="README.md"><strong>English</strong></a> · <a href="README.zh.md">中文</a></p>
 
-<p align="center">
-  <a href="README.md"><strong>English</strong></a> · <a href="README.zh.md">中文</a>
-</p>
+**Version 0.3.0 · Python ≥3.11 · checked 2026-09-08.** The `gpt-image` skill and CLI turn a brief and actual reference images into image requests. Defaults are `gpt-image-2.5-flare`, `high`, `1024x1024`, PNG and one output. An explicit `--model` overrides the default.
 
-<p align="center">
-  <a href="https://github.com/wuyoscar/gpt_image_2_skill/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"/></a>
-  <a href="https://github.com/wuyoscar/gpt_image_2_skill/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"/></a>
-  <img src="https://img.shields.io/badge/model-gpt--image--2-purple.svg" alt="Model: gpt-image-2"/>
-  <img src="https://img.shields.io/badge/python-%E2%89%A53.11-blue.svg" alt="Python ≥ 3.11"/>
-</p>
+| Included | Where to start |
+|---|---|
+| Generation/editing skill and canonical CLI | [SKILL.md](skills/gpt-image/SKILL.md), [API contract](skills/gpt-image/references/model-api.md) |
+| Reference roles, style transfer, chained edits, masks and alpha | [Reference guide](skills/gpt-image/references/reference-images.md) |
+| 10 new 2.5 recipes with portable original inputs | [No. 163–172](skills/gpt-image/references/gallery-gpt-image-2-5.md); authored, **not yet API-generated** |
+| 162 historical prompts and selected previews | [Full gallery index](skills/gpt-image/references/gallery.md); original provenance retained |
+| Image-to-prompt companion skill | [get-prompt-from-image](skills/get-prompt-from-image/SKILL.md) |
 
-<p align="center">
-  <a href="https://oosmetrics.com/repo/wuyoscar/gpt_image_2_skill"><img src="https://img.shields.io/static/v1?label=oosmetrics&message=Top%201%20Agents&color=8AA399" alt="oosmetrics Top 1 in Agents by velocity"/></a>
-  <a href="https://oosmetrics.com/repo/wuyoscar/gpt_image_2_skill"><img src="https://img.shields.io/static/v1?label=oosmetrics&message=Top%201%20LLMs&color=8798B5" alt="oosmetrics Top 1 in LLMs by velocity"/></a>
-  <a href="https://oosmetrics.com/repo/wuyoscar/gpt_image_2_skill"><img src="https://img.shields.io/static/v1?label=oosmetrics&message=Top%201%20CLI&color=A58B9D" alt="oosmetrics Top 1 in CLI by velocity"/></a>
-</p>
+The old previews are historical and are not evidence of GPT Image 2.5 performance. The new recipes demonstrate how to request the features; their API outputs and visual comparisons remain pending. See the [migration plan](docs/gpt-image-2.5-migration-plan.md) and [implementation validation](docs/gpt-image-2-5/validation.md).
 
-<p align="center">
-  <a href="docs/assets/gptimage2skill-banner.png"><img src="docs/assets/gptimage2skill-banner.png" alt="GPTImage2Skill banner" width="100%"/></a>
-</p>
+OpenAI's [release](https://openai.com/index/introducing-chatgpt-images-2-5/), [2.5 prompting guide](https://developers.openai.com/api/docs/guides/image-prompting) and [Images API guide](https://developers.openai.com/api/docs/guides/image-generation) are the current source material. Both 2.5 variants support generation, editing, inpainting and `xhigh`/`max` quality. ChatGPT Sketch, templates and comments are product interfaces; this CLI uses ordinary image references and masks.
 
-
-
-
-
-
-
-
-
-
-## ✨ At a glance
-
-<table border="1" cellspacing="0" cellpadding="6">
-  <tr>
-    <th align="left">Item</th>
-    <th align="left">Value</th>
-  </tr>
-  <tr>
-    <td>Gallery size</td>
-    <td><strong>Small but mighty</strong> · curated for signal, not volume; README shows a selected showcase</td>
-  </tr>
-  <tr>
-    <td>Surfaces</td>
-    <td><strong>2 Agent Skills + CLI</strong> — Claude Code / Codex, OpenClaw, Hermes Agent and other skill-capable agent runtimes</td>
-  </tr>
-  <tr>
-    <td>Last update</td>
-    <td><strong>2026-09-04</strong></td>
-  </tr>
-  <tr>
-    <td>Docs</td>
-    <td><strong>English + 中文</strong></td>
-  </tr>
-</table>
-
-<p align="center">
-  <a href="https://starmapper.bruniaux.com/wuyoscar/GPT-Image2-Skill?utm_source=map-embed&utm_medium=readme&utm_campaign=stargazer-map">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://starmapper.bruniaux.com/api/map-image/wuyoscar/GPT-Image2-Skill?theme=dark" />
-      <source media="(prefers-color-scheme: light)" srcset="https://starmapper.bruniaux.com/api/map-image/wuyoscar/GPT-Image2-Skill?theme=light" />
-      <img alt="Stargazer map for GPT-Image2-Skill" src="https://starmapper.bruniaux.com/api/map-image/wuyoscar/GPT-Image2-Skill" width="100%" />
-    </picture>
-  </a>
-</p>
-
-
-
-
----
-
-## 🔎 What is this repo for?
-
-Use this repo as a **GPT Image 2 prompt gallery**, **image prompt library**, **generated-image showcase**, **agent-skill collection**, and **gpt-image-2 CLI**. The selected examples cover research paper figures, posters, UI mockups, game HUDs, anime / manga, photography, typography, maps, tattoo design, and reference-image editing.
-
-> This project is not trying to collect every prompt on the internet. We keep a selected set of examples that show what GPT Image 2 can do and how to use it well. Thanks for all the love this little gallery has received 🫶.
-
-> [!CAUTION]
-> For research figures, treat generated images as references, workflow sketches, or reproducible style targets. We do **not** recommend dropping GPT Image 2 outputs directly into a paper as-is; for academic communication, that can be misleading and is generally bad practice.
-
----
-
-Contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), and [SECURITY.md](SECURITY.md).
-
-## 📥 
+## 📥 Install
 
 Choose either skill or install both: `gpt-image` generates and edits images, while `get-prompt-from-image` extracts prompts from reference images.
 
@@ -195,10 +127,16 @@ done
 <summary><strong>CLI</strong></summary>
 
 ```bash
-uvx --from git+https://github.com/wuyoscar/gpt_image_2_skill gpt-image -p "a cat astronaut"
+# From this updated checkout; no global installation required
+uv run gpt-image --version
+uv run gpt-image -p "a cat astronaut"
+
+# Remote execution uses the published repository version; verify first
+uvx --from git+https://github.com/wuyoscar/gpt_image_2_skill gpt-image --version
 
 # or install to PATH if not already installed
 command -v gpt-image >/dev/null || uv tool install git+https://github.com/wuyoscar/gpt_image_2_skill
+gpt-image --version  # Require 0.3.0+ and the Flare default
 gpt-image -p "a cat astronaut"
 ```
 
@@ -221,7 +159,7 @@ uv tool upgrade gpt-image-cli
 
 Reads `OPENAI_API_KEY` from process env, then `.env`, then `~/.env` without overriding an already-set env var.
 
-> **Agent + API-key note.** Codex also has its own built-in image-generation skill, but that path is black-box and cannot be edited here; Codex users can switch to it if they prefer. Thanks to the related issue discussion for the simple safety tip: if you do not want an agent to accidentally use your OpenAI API key, run `unset OPENAI_API_KEY` before invoking the local CLI/skill.
+> **Credentials and host tools.** Unsetting `OPENAI_API_KEY` does not disable `.env` or `~/.env` loading. If you decline local-key use, do not invoke this CLI. A host-managed image tool may use different credentials and may not expose a Flare/Sunburst selector; follow its actual runtime contract.
 
 ---
 
@@ -229,7 +167,7 @@ Reads `OPENAI_API_KEY` from process env, then `.env`, then `~/.env` without over
 
 ### 🆕 Update: Get Prompt from Image
 
-Thanks to [@LunarXuan](https://github.com/LunarXuan) for contributing **Get Prompt from Image**. Give a vision-capable agent an image, and this skill extracts a reusable prompt that you can pass to `gpt-image` or another image-generation tool. Models such as Gemini 3.8 Flash and GPT-5.6 support vision; results vary between runs, but the overall look can often be recreated surprisingly well.
+Thanks to [@LunarXuan](https://github.com/LunarXuan) for contributing **Get Prompt from Image**. Give a vision-capable agent an image, and this skill extracts a reusable prompt that you can pass to `gpt-image` or another image-generation tool. Use a vision-capable runtime. The extracted prompt describes visible traits; recreating it still requires a separate image request and inspection.
 
 Attach an image and invoke the skill with a slash command, `$get-prompt-from-image`, or plain language:
 
@@ -276,119 +214,107 @@ photorealistic, 3D render, flat vector style, pure cel shading, watercolor bleed
 
 After install, every gallery entry below can be copy-pasted as `gpt-image -p "…"` or requested from any skill-capable agent runtime in natural language, e.g. *"generate the Boston Spring poster from the skill gallery"*.
 
-### Text → image
+### Generate with the default, or choose Sunburst
 
 ```bash
-gpt-image -p "a photorealistic convenience store at 10pm" --size 1k --quality high -f store.png
+gpt-image --version  # 0.3.0+, default: gpt-image-2.5-flare
+gpt-image -p 'A handmade cream mug with a cobalt handle on folded linen. Morning window light, visible glaze texture, empty space above, no text.' -f mug.png
+gpt-image --model gpt-image-2.5-sunburst -p 'YOUR BRIEF' --quality xhigh -f sunburst.png
 ```
 
-Under the hood: `POST /v1/images/generations` with `model=gpt-image-2`.
+Without `-i`, the CLI calls `POST /v1/images/generations`. Any `-i` selects `POST /v1/images/edits`, including creation of a new composition from references. File arguments attach actual images in order.
 
-### Text + reference image → image (edit)
+### Separate the subject from the style
+
+Inspect the files before choosing which properties to borrow:
 
 ```bash
-# Single-reference edit / restyle
-gpt-image -p "Make it a winter evening with heavy snowfall" \
-  -i chess.png --quality high -f chess-winter.png
+gpt-image -i subject.png -i style.png -p 'Image 1 supplies the subject and its recognizable markings. Image 2 supplies only its pencil contours, ochre/blue palette and paper texture. Illustrate the subject from Image 1 beside a front door. Exclude Image 2’s people and lettering.' -f subject-restyled.png
 
-# Multi-reference edit: the edits endpoint accepts multiple input images
-gpt-image -p "Place the dog from image 2 next to the woman in image 1. Match the same lighting, composition, and background. Do not change anything else." \
-  -i woman.png -i dog.png --size portrait --quality medium -f woman-with-dog.png
+# The mask and first input must be same-size PNGs with alpha in the mask.
+gpt-image -i photo.png -m sky-mask.png -p 'Replace the masked sky with an aurora; preserve the landscape and match the lighting.' -f aurora.png
 
-# Mask-based inpaint: opaque = keep, transparent = regenerate
-gpt-image -p "replace sky with aurora" \
-  -i photo.jpg -m sky_mask.png -f aurora.png
+# Transparency must be requested through the control, not just the prompt.
+gpt-image -i bottle.png -p 'Extract the complete bottle onto a fully transparent background. Preserve the label and edges; no backdrop or ground shadow.' --background transparent --format png -f bottle-cutout.png
 ```
 
-Under the hood: `POST /v1/images/edits` (multipart form), the official endpoint in the OpenAI cookbook. `gpt-image-2` supports `image`, `mask`, `prompt`, `size`, `quality`, `background`, `output_format`, and `n`. Multiple `-i` inputs are supported for multi-reference edits.
+A style reference is an ordinary `-i` file with its role explained in the prompt. Masks guide an edit and do not guarantee identical pixels outside the target. For a follow-up, attach the latest accepted output, explicitly preserve earlier changes, and save to a new filename. Repeat `--background transparent` on transparent follow-ups. Read the [reference guide](skills/gpt-image/references/reference-images.md) for examples and inspection criteria.
 
-### Parameters (complete)
+### CLI parameters
 
-<details>
-<summary><strong>Show full parameter reference</strong></summary>
+| Flag | Values / behavior | Default |
+|---|---|---|
+| `-p, --prompt` | Required, nonblank, up to 32,000 characters | — |
+| `-f, --file` | PNG/JPEG/WebP output path; extensionless paths receive an extension | Timestamp/slug in current directory, or `fig/` if present |
+| `--model` | Explicit model ID; Sunburst: `gpt-image-2.5-sunburst` | `gpt-image-2.5-flare` |
+| `-i, --image` | Repeatable ordered inputs, up to 16, PNG/JPEG/WebP below 50 MB each | None |
+| `-m, --mask` | PNG alpha mask for first PNG input, same dimensions; transparent means edit | None |
+| `--size` | `auto`, `WIDTHxHEIGHT`, or shortcuts below | `1024x1024` |
+| `--quality` | `auto`, `low`, `medium`, `high`, `xhigh`, `max` | `high`; API default is `auto` |
+| `-n, --n` | 1–10 variants of the same request; multiple outputs use `_0`, `_1`, … | 1 |
+| `--background` | `auto`, `opaque`, `transparent`, on generation and edits | API `auto` |
+| `--format` | `png`, `jpeg`, `webp`; explicit format/extension conflicts are errors | File extension, otherwise PNG |
+| `--compression` | 0–100, JPEG/WebP only | Omitted |
+| `--moderation` | `auto`, `low`; explicitly supported on edits via SDK `extra_body` | Generation `low`; edits API default |
+| `--input-fidelity` | Optional edit `low`/`high`; exact Image 2 aliases reject it; 2.5 explicit values pass through | Omitted; no assumed 2.5-specific default |
+| `--user` / `--version` | Optional end-user identifier / report effective backend and default | — |
 
-| Flag | Values | Default | Applies to | Notes |
-|---|---|---|---|---|
-| `-p, --prompt` | str | — required | both | Full prompt text. |
-| `-f, --file` | path | `./fig/YYYY-MM-DD-HH-MM-SS-<slug>.png` | both | Explicit output path. |
-| `-i, --image` | path (repeatable) | — | edits | Presence routes through `/v1/images/edits`. |
-| `-m, --mask` | path (PNG, alpha) | — | edits | Opaque = preserved, transparent = regenerated. Requires `-i`. |
-| `--input-fidelity` | `low` · `high` | — | edits | Supported on `gpt-image-1`/`1.5`. `gpt-image-2` rejects this parameter, so the CLI drops it locally. |
-| `--size` | `1k` · `2k` · `4k` · `portrait` · `landscape` · `square` · `wide` · `tall` · literal `1024x1024` etc. | `1024x1024` | both | Literals must be 16-px multiples, max edge 3840, 3:1 cap, 655k–8.3M total pixels. |
-| `--quality` | `auto` · `low` · `medium` · `high` | `high` | both | This is the practical budget dial: `low` for cheap drafts / large sweeps, `medium` for normal exploration, `high` for final text-heavy or shipping-facing assets. |
-| `-n, --n` | int | 1 | both | Batch generation. `n>1` suffixes filenames `_0`, `_1`, … |
-| `--background` | `auto` · `opaque` | API default | generations | `opaque` disables transparency. |
-| `--moderation` | `auto` · `low` | `low` | generations | `low` is the default here for broader prompt exploration; switch to `auto` if you want the stricter API-side default. |
-| `--format` | `png` · `jpeg` · `webp` | `png` | both | Response encoding. |
-| `--compression` | 0–100 | — | both | JPEG/WebP only. |
+`1k`/`square` → 1024×1024; `portrait` → 1024×1536 (2:3); `landscape` → 1536×1024 (3:2); `wide` → 2048×1152 (16:9). `2k` → 2048×2048; `4k` → 3840×2160; `tall` → 2160×3840. Those last three exceed the experimental pixel-area threshold.
 
-</details>
+2.5 dimensions must be multiples of 16, each edge ≤3840, ratio ≤3:1, and total pixels 655,360–8,294,400. Above 3,686,400 pixels is experimental. For an exact 3:4 poster use `--size 1152x1536`; `portrait` is 2:3. A “1290×2796 phone screen” inside a historical prompt describes the depicted device, not a valid output size. PNG/WebP support transparent output; JPEG does not.
 
-### Budget / quality guide
+The CLI validates arguments before loading credentials, preserves input order, closes uploaded files, and checks returned encoding, dimensions and requested alpha before writing results. Visual inspection remains necessary for copy, identity, edit locality and edges. Successful stdout contains paths only. Exit codes: `0` success, `1` API/output failure, `2` invalid input/configuration. API failures do not silently switch models.
 
-There is no separate `budget` flag here — use `--quality` as the budget knob.
+### Quality, cost and SDK use
 
-- `low` = cheap draft / collect / many variants
-- `medium` = normal exploration / style probing
-- `high` = final posters, Chinese text, diagrams, paper figures, banners
+Keep the same prompt, reference order, explicit quality, size and format when comparing Image 2 with Flare or Flare with Sunburst. Start with the existing `high` default; if a requirement fails, compare `xhigh` or `max` before expanding a clear prompt. After acceptance, evaluate lower quality when optimizing latency/cost matters. No setting guarantees exact copy. The [2.5 examples](skills/gpt-image/references/gallery-gpt-image-2-5.md#controlled-quality-and-model-comparisons) include commands for controlled comparisons.
 
-If you are generating dozens of candidates, start at `low` and only rerun finalists at `high`.
+Both 2.5 variants have the same published standard token rates, but may consume different usage. Measure latency and cost per accepted image including references and retries; do not reuse Image 2 per-image price tables. See the [dated pricing and API reference](skills/gpt-image/references/model-api.md).
 
-### From gallery prompt → CLI / SDK
-
-Every entry below ships **just the prompt plus a metadata line** (`"size"` · `"quality"` · source). Assemble the CLI / SDK call the same way every time — worked once here so per-entry code blocks can stay out of your way. Example for a `"portrait"` · `"high"` entry:
-
-```bash
-# CLI
-gpt-image -p "<PROMPT FROM ENTRY>" --size portrait --quality high -f out.png
-```
+The CLI uses OpenAI Python SDK ≥3.9.0, a tested serialization floor. For application integration:
 
 ```python
-# OpenAI SDK — `size` is the literal pixels; the CLI shortcut maps to `1024x1536` for portrait
 from openai import OpenAI
 client = OpenAI()
 result = client.images.generate(
-    model="gpt-image-2",
-    prompt="<PROMPT FROM ENTRY>",
-    size="1024x1536",
+    model="gpt-image-2.5-flare",
+    prompt="YOUR BRIEF",
+    size="1152x1536",
     quality="high",
+    output_format="png",
 )
 ```
 
-For reference-based edits, add `-i ref.png` (repeatable) and optionally `-m mask.png` on the CLI, or call `client.images.edit(...)` with `image=[open(p, "rb") for p in refs]`. Everything else stays identical to the generate path.
-
-Exit codes: `0` success · `1` API/refusal error (full response body echoed to stderr) · `2` bad args or missing `OPENAI_API_KEY`.
+Normal skill use calls the packaged CLI. Applications requiring retained conversational image state can use the Responses image-generation tool; its explicit image model selection and costs are documented in [model-api.md](skills/gpt-image/references/model-api.md#responses-api-and-host-tools).
 
 </details>
 
-### 📖 Prompting Fundamentals
+### Prompting for 2.5
 
-<details>
-<summary><strong>Show prompting notes</strong></summary>
+1. State the image's use and subject, followed by the visible details that matter. Use prose or labels as helpful; no mandatory JSON schema, keyword quota or gallery search.
+2. Quote exact copy, prices and dates verbatim. Describe hierarchy and actual canvas ratio when layout matters; verify factual data before illustrating it.
+3. Inspect references and name their roles in attachment order. Separate style from content, and define what survives an edit.
+4. Inspect the output against the brief. Correct a specific failure, retain accepted changes, and compare quality settings with other controls fixed.
 
-Distilled from OpenAI's [official GPT Image prompting guide](https://github.com/openai/openai-cookbook/blob/main/examples/multimodal/image-gen-models-prompting-guide.ipynb) (also archived locally at [`skills/gpt-image/references/openai-cookbook.md`](skills/gpt-image/references/openai-cookbook.md) — loaded on demand by the skill when you ask about parameter semantics, edits, UI mockups, pitch-deck slides, scientific visuals, virtual try-on, billboard mockups, or translation edits):
+The [craft guide](skills/gpt-image/references/craft.md) retains practical art direction for products, typography, diagrams, UI and multi-panel work. The [old cookbook](skills/gpt-image/references/openai-cookbook.md) remains an attributed historical archive; it is not the current parameter authority.
 
-1. **Structure, then goal.** Use a consistent order: `background/scene → subject → key details → constraints`, and **state the intended use** (ad, UI mock, infographic) so the model picks the right mode and polish level.
-2. **Any format works; consistency matters more.** Minimal prompts, descriptive paragraphs, JSON-style structures, instruction-style prompts, and tag-based prompts all work. For production, prefer a skimmable template over clever syntax.
-3. **Specificity + quality cues.** Be concrete about materials, shapes, textures, and medium (photo, watercolor, 3D render). Add targeted levers only when they matter: *film grain*, *textured brushstrokes*, *macro detail*. For photorealism, say *"photorealistic"* directly; *"real photograph"*, *"taken on a real camera"*, and *"iPhone photo"* also help.
-4. **Put required text in quotes.** Any text that must appear in the image — slogans, prices, kanji — should be in straight quotes. Do not paraphrase it inside the prompt.
-5. **Choose aspect ratio early.** Decide 1:1 / 3:4 / 4:3 / 9:16 / 16:9 / 3:1 before writing the prompt. Reinforce it in the prompt text, not only with `--size`.
-6. **One hero, supporting cast.** Complex scenes work best when one subject is clearly primary and the rest is framed as supporting detail.
-7. **Use `quality="high"` for in-image text, dense diagrams, small labels, and multi-panel layouts.** Those cases degrade visibly at `medium`.
+### New 2.5 examples: inputs are included, outputs pending
 
-**The skill ships four local reference surfaces:**
-- [`skills/gpt-image/references/gallery.md`](skills/gpt-image/references/gallery.md) — lightweight routing index for the split Reference Gallery Atlas. It should be read first to pick a category; it does **not** contain the full prompt dump.
-- `skills/gpt-image/references/gallery-*.md` — one category per file, loaded only when relevant, e.g. [`gallery-product-and-food.md`](skills/gpt-image/references/gallery-product-and-food.md), [`gallery-ui-ux-mockups.md`](skills/gpt-image/references/gallery-ui-ux-mockups.md), [`gallery-research-paper-figures.md`](skills/gpt-image/references/gallery-research-paper-figures.md). This keeps the skill useful without overflowing context.
-- [`skills/gpt-image/references/craft.md`](skills/gpt-image/references/craft.md) — expanded 19-section prompt-craft checklist covering gallery-first usage, JSON/config-style prompts, multi-panel boards, UI specs, data/diagram grammar, edit invariants, reference workflows, dense text, and category mini-schemas.
-- [`skills/gpt-image/references/openai-cookbook.md`](skills/gpt-image/references/openai-cookbook.md) — verbatim Markdown capture of OpenAI's cookbook (1004 lines), including the authoritative parameter-coverage table and every §4 / §5 use-case example.
+| Example | What to try |
+|---|---|
+| Subject + style | [No. 164](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-164--e2-subject-identity-plus-style-only-reference): dog identity with a separate illustrated style |
+| Precise edit + retained follow-ups | [No. 166–167](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-166--e4-correct-one-price-without-redesigning): price, cap color, date |
+| Real transparent output | [No. 169](skills/gpt-image/references/gallery-gpt-image-2-5.md#no-169--e7-transparent-cutout-and-transparent-follow-up): alpha cutout and cap recolor |
 
-</details>
+The full set also covers product/style/logo inputs, sketch/material separation, annotations/masks, localization and a coordinated campaign. All twelve [starter images](skills/gpt-image/assets/gpt-image-2-5/README.md) are original deterministic drawings, not 2.5 results. These recipes are **unexecuted** until an API run and visual review are recorded.
 
 ---
 
 <a id="gallery-index"></a>
 
 ## 🎨 Prompt Showcase
+
+> Historical showcase: prompts and previews retain their original attribution. Missing model records remain unknown; these images are not relabeled as 2.5 results. Prompt dimensions may describe the composition rather than the API canvas. Use the current size table above when running an adaptation.
 
 > **About the prompts.** This README showcases a representative selection of prompts together with their generated images. The larger Reference Gallery contains the full curated prompt/image atlas, organized by category in [`skills/gpt-image/references/gallery.md`](skills/gpt-image/references/gallery.md) and the matching `skills/gpt-image/references/gallery-*.md` files.
 >

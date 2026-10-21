@@ -1,5 +1,9 @@
 # 📱 UI/UX Mockups
 
+> **Historical gallery entry source.** Original prompts, numbering and attribution are retained. Preview images and generation settings are historical; an unrecorded generating model remains unknown. Repository-relative previews are optional archive assets and may be absent in standalone skill installs. Use [model-api.md](model-api.md) for current 2.5 settings and attach your own actual files for reference edits.
+
+> **Current adaptation note:** No. 102’s 1290×2796 smartphone screen describes the depicted device, not a valid API output size. Choose a valid canvas such as `1024x1536` for a phone mockup; disclose any downstream resizing needed for an exact deliverable.
+
 Range: No. 102–106 · Count: 5
 
 Load this file only when the request matches this category. For cross-cutting writing rules, pair it with `craft.md`.

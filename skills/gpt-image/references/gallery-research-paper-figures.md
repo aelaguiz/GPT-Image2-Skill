@@ -1,5 +1,9 @@
 # 📚 Research Paper Figures
 
+> **Historical gallery entry source.** Original prompts, numbering and attribution are retained. Preview images and generation settings are historical; an unrecorded generating model remains unknown. Repository-relative previews are optional archive assets and may be absent in standalone skill installs. Use [model-api.md](model-api.md) for current 2.5 settings and attach your own actual files for reference edits.
+
+> **Current adaptation note:** These are historical design examples, not verified scientific data. No. 75 lists exclusions totaling 156 while screened minus eligible is 636, leaving 480 unexplained. No. 86 lists 1,008B input tokens but 1,415B in output splits without a stated expansion mechanism. Resolve those inconsistencies from real source data before generating a factual figure. For prompts requesting 16:9, use a valid matching canvas such as `2048x1152`; historical `landscape` metadata is 3:2.
+
 Range: No. 75–95 · Count: 21
 
 Load this file only when the request matches this category. For cross-cutting writing rules, pair it with `craft.md`.

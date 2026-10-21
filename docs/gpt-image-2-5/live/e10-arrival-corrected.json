@@ -1,0 +1,75 @@
+{
+  "case": "e10-arrival-corrected",
+  "started_utc": "2026-09-08T21:05:11.812075+00:00",
+  "sdk_version": "3.9.0",
+  "argv": [
+    "-i",
+    "docs/gpt-image-2-5/live/e10-arrival.png",
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/dog.png",
+    "-p",
+    "Image 1 is the campaign image to edit. Image 2 is the original dog identity anchor. Remove only the round white patch on the visible hindquarter in Image 1, filling it with the same dark coat as the surrounding body. Preserve the dog pose, white paws, white muzzle and belly, eye marking, red collar, round collar tag, bakery, framing, palette and paper texture. Do not add or move any other markings. No text.",
+    "-f",
+    "docs/gpt-image-2-5/live/e10-arrival-corrected.png"
+  ],
+  "post_processing": "none",
+  "visual_review": {
+    "status": "accepted",
+    "findings": "The added round white hindquarter patch is removed. Dark coat, white paws, original head/collar traits, dog pose, storefront, palette and paper texture remain. Accepted alongside the purchase image as the final campaign pair."
+  },
+  "endpoint": "/v1/images/edits",
+  "request": {
+    "prompt": "Image 1 is the campaign image to edit. Image 2 is the original dog identity anchor. Remove only the round white patch on the visible hindquarter in Image 1, filling it with the same dark coat as the surrounding body. Preserve the dog pose, white paws, white muzzle and belly, eye marking, red collar, round collar tag, bakery, framing, palette and paper texture. Do not add or move any other markings. No text.",
+    "file": "docs/gpt-image-2-5/live/e10-arrival-corrected.png",
+    "image": [
+      "docs/gpt-image-2-5/live/e10-arrival.png",
+      "skills/gpt-image/assets/gpt-image-2-5/dog.png"
+    ],
+    "mask": null,
+    "model": "gpt-image-2.5-flare",
+    "size": "1024x1024",
+    "quality": "high",
+    "n": 1,
+    "background": null,
+    "moderation": null,
+    "input_fidelity": null,
+    "output_format": "png",
+    "output_compression": null,
+    "user": null
+  },
+  "input_sha256": {
+    "docs/gpt-image-2-5/live/e10-arrival.png": "60885ffa182a4d90ba308750e926336724734a956317b5eba99b34762db36f38",
+    "skills/gpt-image/assets/gpt-image-2-5/dog.png": "2439274ca4ffb880517b81510557c62b7a5125f4ecf5f5174f41ed78258823f7"
+  },
+  "response": {
+    "created": 1788901535,
+    "background": "opaque",
+    "output_format": "png",
+    "quality": "high",
+    "size": "1024x1024",
+    "usage": {
+      "input_tokens": 2166,
+      "input_tokens_details": {
+        "image_tokens": 2048,
+        "text_tokens": 118
+      },
+      "output_tokens": 1756,
+      "total_tokens": 3922,
+      "output_tokens_details": {
+        "image_tokens": 1756,
+        "text_tokens": 0
+      }
+    }
+  },
+  "request_id": "req_393311f381b34de2b2e6ef6971993bfa",
+  "api_elapsed_seconds": 24.226,
+  "exit_code": 0,
+  "elapsed_seconds": 24.268,
+  "completed_utc": "2026-09-08T21:05:36.080465+00:00",
+  "output_sha256": "df17937ec7c7fc8bf0f45a3980b8c006cba29a29c01db5b7ad7062f8e5ec246f",
+  "effective_moderation": "API default",
+  "application_attempts": 1,
+  "sdk_automatic_retries": "not separately instrumented",
+  "model_snapshot": "not returned by the Images response",
+  "uncached_rate_estimate_usd": 0.069654
+}

@@ -1,3 +1,5 @@
+> **Historical archive — Image 2-era cookbook.** Preserved for original examples and attribution. Model IDs, parameter tables, quality choices, transparency statements and SDK examples below may be outdated. For current GPT Image 2.5 behavior use [model-api.md](model-api.md); for current prompting use [craft.md](craft.md) and the [official 2.5 guide](https://developers.openai.com/api/docs/guides/image-prompting). Do not use this archive to choose the default model.
+
 ---
 source: https://github.com/openai/openai-cookbook/blob/main/examples/multimodal/image-gen-models-prompting-guide.ipynb
 captured: 2026-04-23

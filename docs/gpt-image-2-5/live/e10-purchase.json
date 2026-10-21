@@ -1,0 +1,75 @@
+{
+  "case": "e10-purchase",
+  "started_utc": "2026-09-08T21:04:23.648305+00:00",
+  "sdk_version": "3.9.0",
+  "argv": [
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/dog.png",
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/pencil-style.png",
+    "-p",
+    "Image 1 supplies the dog: preserve upright ears, viewer-left black eye patch, white muzzle and belly, dark body and red collar. Image 2 supplies only sparse pencil contours, flat ochre/blue shapes and paper grain; exclude its person, chair and lettering. Scene B: the same dog stands beside the bakery counter as a paper bag of bread is handed down toward it. Interior viewpoint, warm welcoming illustration. No text.",
+    "-f",
+    "docs/gpt-image-2-5/live/e10-purchase.png"
+  ],
+  "post_processing": "none",
+  "visual_review": {
+    "status": "accepted",
+    "findings": "Distinct interior purchase scene preserves the source dog’s viewer-left eye patch, white muzzle/belly, dark coat, white paws, red collar and round tag. Blue/ochre palette, contours and paper grain align with the arrival scene; no lettering. No added white flank patch."
+  },
+  "endpoint": "/v1/images/edits",
+  "request": {
+    "prompt": "Image 1 supplies the dog: preserve upright ears, viewer-left black eye patch, white muzzle and belly, dark body and red collar. Image 2 supplies only sparse pencil contours, flat ochre/blue shapes and paper grain; exclude its person, chair and lettering. Scene B: the same dog stands beside the bakery counter as a paper bag of bread is handed down toward it. Interior viewpoint, warm welcoming illustration. No text.",
+    "file": "docs/gpt-image-2-5/live/e10-purchase.png",
+    "image": [
+      "skills/gpt-image/assets/gpt-image-2-5/dog.png",
+      "skills/gpt-image/assets/gpt-image-2-5/pencil-style.png"
+    ],
+    "mask": null,
+    "model": "gpt-image-2.5-flare",
+    "size": "1024x1024",
+    "quality": "high",
+    "n": 1,
+    "background": null,
+    "moderation": null,
+    "input_fidelity": null,
+    "output_format": "png",
+    "output_compression": null,
+    "user": null
+  },
+  "input_sha256": {
+    "skills/gpt-image/assets/gpt-image-2-5/dog.png": "2439274ca4ffb880517b81510557c62b7a5125f4ecf5f5174f41ed78258823f7",
+    "skills/gpt-image/assets/gpt-image-2-5/pencil-style.png": "79cf4a0f0d8198feba9ef92a129fca17ee3361ff8ad4e51f0008ec56211b65f4"
+  },
+  "response": {
+    "created": 1788901500,
+    "background": "opaque",
+    "output_format": "png",
+    "quality": "high",
+    "size": "1024x1024",
+    "usage": {
+      "input_tokens": 2162,
+      "input_tokens_details": {
+        "image_tokens": 2048,
+        "text_tokens": 114
+      },
+      "output_tokens": 1756,
+      "total_tokens": 3918,
+      "output_tokens_details": {
+        "image_tokens": 1756,
+        "text_tokens": 0
+      }
+    }
+  },
+  "request_id": "req_38b8d3c0a167492a8b9e0257e6044c95",
+  "api_elapsed_seconds": 36.831,
+  "exit_code": 0,
+  "elapsed_seconds": 36.87,
+  "completed_utc": "2026-09-08T21:05:00.519246+00:00",
+  "output_sha256": "6bbe483f3f7f28c667f4c36d0e77730109ef5900cd4e463aef4be0807a0cd31a",
+  "effective_moderation": "API default",
+  "application_attempts": 1,
+  "sdk_automatic_retries": "not separately instrumented",
+  "model_snapshot": "not returned by the Images response",
+  "uncached_rate_estimate_usd": 0.069634
+}

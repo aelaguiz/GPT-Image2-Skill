@@ -1,0 +1,84 @@
+{
+  "case": "e7-cutout-blue",
+  "started_utc": "2026-09-08T21:01:09.634995+00:00",
+  "sdk_version": "3.9.0",
+  "argv": [
+    "-i",
+    "docs/gpt-image-2-5/live/e7-cutout.png",
+    "-p",
+    "Change only the cap to cobalt blue. Preserve the bottle drawing, geometry, exact label text, clean edges and fully transparent background.",
+    "--background",
+    "transparent",
+    "--format",
+    "png",
+    "-f",
+    "docs/gpt-image-2-5/live/e7-cutout-blue.png"
+  ],
+  "post_processing": "none",
+  "visual_review": {
+    "status": "accepted_with_caveat",
+    "findings": "Cap is blue and real transparency remains. MORA, COLD BREW and 250 ml and full silhouette survive. Light/dark previews remain usable. Alpha again spans 0–254, so product interior is not perfectly opaque."
+  },
+  "endpoint": "/v1/images/edits",
+  "request": {
+    "prompt": "Change only the cap to cobalt blue. Preserve the bottle drawing, geometry, exact label text, clean edges and fully transparent background.",
+    "file": "docs/gpt-image-2-5/live/e7-cutout-blue.png",
+    "image": [
+      "docs/gpt-image-2-5/live/e7-cutout.png"
+    ],
+    "mask": null,
+    "model": "gpt-image-2.5-flare",
+    "size": "1024x1024",
+    "quality": "high",
+    "n": 1,
+    "background": "transparent",
+    "moderation": null,
+    "input_fidelity": null,
+    "output_format": "png",
+    "output_compression": null,
+    "user": null
+  },
+  "input_sha256": {
+    "docs/gpt-image-2-5/live/e7-cutout.png": "11d83f66f73873ff64b0f33835df6be4413db747f5248e70caab3f765f4cfa0d"
+  },
+  "response": {
+    "created": 1788901286,
+    "background": "transparent",
+    "output_format": "png",
+    "quality": "high",
+    "size": "1024x1024",
+    "usage": {
+      "input_tokens": 1066,
+      "input_tokens_details": {
+        "image_tokens": 1024,
+        "text_tokens": 42
+      },
+      "output_tokens": 1756,
+      "total_tokens": 2822,
+      "output_tokens_details": {
+        "image_tokens": 1756,
+        "text_tokens": 0
+      }
+    }
+  },
+  "request_id": "req_f975bb5a595b4ff7965648b421cfa564",
+  "api_elapsed_seconds": 17.323,
+  "exit_code": 0,
+  "elapsed_seconds": 17.354,
+  "completed_utc": "2026-09-08T21:01:26.989656+00:00",
+  "output_sha256": "e26a67f8d9da2661c7ecfc025a2fe19cb45df88610d8efb09e734631aba5cd4c",
+  "effective_moderation": "API default",
+  "application_attempts": 1,
+  "sdk_automatic_retries": "not separately instrumented",
+  "model_snapshot": "not returned by the Images response",
+  "alpha": {
+    "extrema": [
+      0,
+      254
+    ],
+    "fully_transparent_pixels": 839257,
+    "fully_opaque_pixels": 0,
+    "total_pixels": 1048576
+  },
+  "uncached_rate_estimate_usd": 0.061082
+}

@@ -1,0 +1,74 @@
+{
+  "case": "e8-mask",
+  "started_utc": "2026-09-08T21:00:07.537062+00:00",
+  "sdk_version": "3.9.0",
+  "argv": [
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/coat.png",
+    "-m",
+    "skills/gpt-image/assets/gpt-image-2-5/sleeve-mask.png",
+    "-p",
+    "Recolor the masked sleeve forest green. Preserve the coat body, other sleeve, buttons, outlines, composition and background.",
+    "-f",
+    "docs/gpt-image-2-5/live/e8-mask.png"
+  ],
+  "post_processing": "none",
+  "visual_review": {
+    "status": "accepted_with_caveat",
+    "findings": "Correct viewer-right sleeve is forest green. Four buttons, other sleeve, coat body and composition are retained; no annotation marks. Slight shading/texture changes extend outside the mask, confirming it is not an exact pixel-preservation boundary."
+  },
+  "endpoint": "/v1/images/edits",
+  "request": {
+    "prompt": "Recolor the masked sleeve forest green. Preserve the coat body, other sleeve, buttons, outlines, composition and background.",
+    "file": "docs/gpt-image-2-5/live/e8-mask.png",
+    "image": [
+      "skills/gpt-image/assets/gpt-image-2-5/coat.png"
+    ],
+    "mask": "skills/gpt-image/assets/gpt-image-2-5/sleeve-mask.png",
+    "model": "gpt-image-2.5-flare",
+    "size": "1024x1024",
+    "quality": "high",
+    "n": 1,
+    "background": null,
+    "moderation": null,
+    "input_fidelity": null,
+    "output_format": "png",
+    "output_compression": null,
+    "user": null
+  },
+  "input_sha256": {
+    "skills/gpt-image/assets/gpt-image-2-5/coat.png": "9e6fe1ff5a9cc7810160f649b2118230084efedb111fd5dbf56249e999d9c0d7",
+    "skills/gpt-image/assets/gpt-image-2-5/sleeve-mask.png": "aaf4d3123316ee69c218509431cfc3d51688895768e52a3f8cf27993eb867ca3"
+  },
+  "response": {
+    "created": 1788901224,
+    "background": "opaque",
+    "output_format": "png",
+    "quality": "high",
+    "size": "1024x1024",
+    "usage": {
+      "input_tokens": 1064,
+      "input_tokens_details": {
+        "image_tokens": 1024,
+        "text_tokens": 40
+      },
+      "output_tokens": 1756,
+      "total_tokens": 2820,
+      "output_tokens_details": {
+        "image_tokens": 1756,
+        "text_tokens": 0
+      }
+    }
+  },
+  "request_id": "req_ba90bb9414624fdd88e726745b5bc9fc",
+  "api_elapsed_seconds": 17.25,
+  "exit_code": 0,
+  "elapsed_seconds": 17.284,
+  "completed_utc": "2026-09-08T21:00:24.821315+00:00",
+  "output_sha256": "2ea81765e8a6941c070b49957abf087f97518efb437a660ffc730548aab78b8a",
+  "effective_moderation": "API default",
+  "application_attempts": 1,
+  "sdk_automatic_retries": "not separately instrumented",
+  "model_snapshot": "not returned by the Images response",
+  "uncached_rate_estimate_usd": 0.061072
+}

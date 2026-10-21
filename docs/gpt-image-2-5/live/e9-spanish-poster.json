@@ -1,0 +1,73 @@
+{
+  "case": "e9-spanish-poster",
+  "started_utc": "2026-09-08T21:02:17.309456+00:00",
+  "sdk_version": "3.9.0",
+  "argv": [
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/english-poster.png",
+    "-p",
+    "Localize only these three poster strings: \"MOUNTAIN BREW\" becomes \"CAFÉ DE MONTAÑA\"; \"FRESH EVERY DAY\" becomes \"FRESCO CADA DÍA\"; \"SEPTEMBER 8\" becomes \"8 DE SEPTIEMBRE\". Preserve price \"$16\", the MORA wordmark, COLD BREW and 250 ml bottle label, imagery, colors, alignment and hierarchy. Retain the typography character; adjust line breaks only where the Spanish copy needs room. Add no other text.",
+    "--size",
+    "1152x1536",
+    "-f",
+    "docs/gpt-image-2-5/live/e9-spanish-poster.png"
+  ],
+  "post_processing": "none",
+  "visual_review": {
+    "status": "accepted_with_caveat",
+    "findings": "CAFÉ DE MONTAÑA, FRESCO CADA DÍA and 8 DE SEPTIEMBRE are correctly rendered, including accents. $16 and MORA / COLD BREW / 250 ml remain correct. Composition and hierarchy retained; headline is heavier than the source font weight and the background gains subtle texture."
+  },
+  "endpoint": "/v1/images/edits",
+  "request": {
+    "prompt": "Localize only these three poster strings: \"MOUNTAIN BREW\" becomes \"CAFÉ DE MONTAÑA\"; \"FRESH EVERY DAY\" becomes \"FRESCO CADA DÍA\"; \"SEPTEMBER 8\" becomes \"8 DE SEPTIEMBRE\". Preserve price \"$16\", the MORA wordmark, COLD BREW and 250 ml bottle label, imagery, colors, alignment and hierarchy. Retain the typography character; adjust line breaks only where the Spanish copy needs room. Add no other text.",
+    "file": "docs/gpt-image-2-5/live/e9-spanish-poster.png",
+    "image": [
+      "skills/gpt-image/assets/gpt-image-2-5/english-poster.png"
+    ],
+    "mask": null,
+    "model": "gpt-image-2.5-flare",
+    "size": "1152x1536",
+    "quality": "high",
+    "n": 1,
+    "background": null,
+    "moderation": null,
+    "input_fidelity": null,
+    "output_format": "png",
+    "output_compression": null,
+    "user": null
+  },
+  "input_sha256": {
+    "skills/gpt-image/assets/gpt-image-2-5/english-poster.png": "606177b65a4cf012060307f7d1ab5c77b9a2c69f78ec22bb3b66d71f656cb032"
+  },
+  "response": {
+    "created": 1788901353,
+    "background": "opaque",
+    "output_format": "png",
+    "quality": "high",
+    "size": "1152x1536",
+    "usage": {
+      "input_tokens": 1576,
+      "input_tokens_details": {
+        "image_tokens": 1452,
+        "text_tokens": 124
+      },
+      "output_tokens": 1629,
+      "total_tokens": 3205,
+      "output_tokens_details": {
+        "image_tokens": 1629,
+        "text_tokens": 0
+      }
+    }
+  },
+  "request_id": "req_61a78642465342bfb14ddba4a2e9dd28",
+  "api_elapsed_seconds": 16.386,
+  "exit_code": 0,
+  "elapsed_seconds": 16.429,
+  "completed_utc": "2026-09-08T21:02:33.738508+00:00",
+  "output_sha256": "23a4ac59e9ad6f4ad39f2b770d81f9eb0d13587f2d0b6edf3c16f3dab0c33f16",
+  "effective_moderation": "API default",
+  "application_attempts": 1,
+  "sdk_automatic_retries": "not separately instrumented",
+  "model_snapshot": "not returned by the Images response",
+  "uncached_rate_estimate_usd": 0.061106
+}

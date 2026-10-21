@@ -1,13 +1,14 @@
-# GPT Image 2 Prompt Gallery Index
+# GPT Image Prompt Gallery Index
 
-Routing index for the full Reference Gallery. This is the canonical full catalog; README is a selected showcase. Do **not** load every category file by default. Pick the closest category below, then read only that file (or at most 2–3 neighboring files) plus `craft.md` when drafting prompts.
+Canonical prompt catalog: **162 historical entries plus 10 live-tested 2.5 feature recipes (172 total)**. README shows selected examples. Consult a category when it helps the task; a clear brief can proceed without gallery research. Load the smallest useful slice and read the actual prompt before adapting it.
 
-Each `gallery-*.md` category file contains the concrete prompts, direct image previews, image paths, metadata, and attribution/source markers for that slice of the Gallery Atlas.
+The [2.5 feature recipes](gallery-gpt-image-2-5.md) have portable starter inputs and explicit reference roles, editing steps and inspection criteria. Their [live outputs and review](../../../docs/gpt-image-2-5/live/README.md) record successful API execution and visual caveats, including one corrected identity detail. Historical category previews are optional repository archive assets; they may be absent in standalone installs and do not demonstrate 2.5 performance. Current model/parameter guidance is in [model-api.md](model-api.md).
 
 ## Category files
 
 | Category | File | Range | Count |
 |---|---|---:|---:|
+| GPT Image 2.5 feature recipes (live-tested) | [gallery-gpt-image-2-5.md](gallery-gpt-image-2-5.md) | No. 163–172 | 10 |
 | 🎌 Anime & Manga | [`gallery-anime-and-manga.md`](gallery-anime-and-manga.md) | No. 1–12 | 12 |
 | 🎮 Gaming | [`gallery-gaming.md`](gallery-gaming.md) | No. 13–22 | 10 |
 | 🤖 Retro & Cyberpunk | [`gallery-retro-and-cyberpunk.md`](gallery-retro-and-cyberpunk.md) | No. 23–25 | 3 |
@@ -40,10 +41,6 @@ Each `gallery-*.md` category file contains the concrete prompts, direct image pr
 | 🖋️ Tattoo Design | [`gallery-tattoo-design.md`](gallery-tattoo-design.md) | No. 157–160 | 4 |
 | 🖥️ Screen Photography | [`gallery-screen-photography.md`](gallery-screen-photography.md) | No. 161–162 | 2 |
 
-## Loading policy
+## Adapting and contributing
 
-- Start here to choose a category; do not read the whole Reference Gallery into context.
-- Read `craft.md` for general prompt-writing principles.
-- Read exactly one `gallery-*.md` category file for normal requests; read two or three only when the user asks for hybrid styles.
-- Preserve `Curated` versus `Author + Source` metadata when adapting examples into README/gallery entries.
-- If entries move, update both this index and the corresponding category file in the same PR. Promote to README only when the example belongs in the selected visual showcase.
+Preserve historical prompt attribution separately from generating-model provenance. Do not relabel old previews as 2.5 outputs. Add new entries with stable numbers after the current maximum; do not renumber unrelated entries. Record a proposed prompt without an output as unexecuted. Update this index alongside its category; promote selected rendered examples to both READMEs after inspection.

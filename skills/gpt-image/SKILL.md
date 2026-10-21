@@ -1,106 +1,85 @@
 ---
 name: gpt-image
-description: "Use this skill whenever a user asks to generate, create, draw, render, or edit images with GPT Image 2 / gpt-image-2, text-to-image, reference-image editing, inpainting, posters, typography, Chinese text, UI mockups, diagrams, or gallery prompts. Analyze the user's prompt, search the bundled Reference Gallery/craft files for matching design patterns, confer on direction when useful, then call the packaged `gpt-image` CLI or bundled `scripts/generate.py`. Do not write new image-generation code unless explicitly asked to modify this repo."
-compatibility: "Requires Python 3.11+ and either `gpt-image`, `uv`, or `uvx`. CLI/API calls read `OPENAI_API_KEY` and may incur OpenAI API charges."
+description: "Generate and edit images through the OpenAI Images API, defaulting to GPT Image 2.5 Flare. Use for explicit GPT Image requests, reference-guided artwork, style transfer, precise image edits, inpainting, transparent assets, posters, typography, UI concepts, and diagrams. Use the packaged CLI; inspect references and assign their roles before generation."
 metadata: {"openclaw":{"requires":{"anyBins":["gpt-image","uv","uvx"]},"primaryEnv":"OPENAI_API_KEY","homepage":"https://github.com/wuyoscar/gpt_image_2_skill"}}
 ---
 
-# gpt-image
+# GPT Image
 
-Agent runbook for GPT Image 2 generation/editing. Use the prompt library + packaged CLI. Do not reimplement image API code.
+**Requirements:** Python 3.11+ and gpt-image-cli 0.3.0+ or uv/uvx. Requires `OPENAI_API_KEY`; API calls may incur charges.
 
-## Operating loop
+Produce a usable image from the user's brief and references with the packaged `gpt-image` CLI. The default is **`gpt-image-2.5-flare`**, quality **high**, **1024×1024**, one image. Honor an explicit model choice; use `gpt-image-2.5-sunburst` when requested or when comparison shows it improves a requirement that Flare missed. Never silently substitute another model after an API error.
 
-1. **Classify request**: `generate`, `edit`, `inpaint`, or `multi-reference`; identify asset type, exact text, aspect ratio, references, safety constraints, and budget/quality.
-2. **Search references first**: open `references/gallery.md`; load/search the closest `references/gallery-<category>.md` file(s). Read actual `**Prompt**` text before choosing a pattern.
-3. **Refine with craft**: load `references/craft.md` for dense text, diagrams, UI, data visualization, multi-panel layouts, weak prompts, or no close gallery match.
-4. **Confer when useful**: before costly/ambiguous/high-polish calls, present 1–3 matched directions plus planned size/quality; ask at most one concise question. Skip long discussion for precise “generate now” requests.
-5. **Preflight, no side effects**: use existing CLI/skill if present. Check command availability (`command -v gpt-image`), installed tool lists when the tool manager exists, or the runtime’s own skill registry when available. Do not assume a local home path in cloud/hosted runtimes.
-6. **No blind setup**: do not reinstall, overwrite skill folders, create/modify `.env`, or write API keys unless the user explicitly requested setup. Global/shared installs are opt-in only.
-7. **Execute via CLI only**: call `gpt-image` or `scripts/generate.py`. Do not create a new `generate.py`, SDK wrapper, or ad-hoc script for normal image requests.
-8. **Report**: output file path(s), key flags, and one concise refinement suggestion if useful.
+## Work through the image
 
-Fast path: precise prompt + explicit “generate now” → quick reference/craft check, then CLI.
+1. **Understand the deliverable.** Identify the intended use, subject, required copy, composition, output format and any constraints that affect the picture. A clear request is enough to proceed. Resolve ordinary design choices yourself; ask only when a missing answer materially affects the result and cannot be inferred.
+2. **Inspect supplied references.** Open the actual images. Assign their roles in attachment order: edit base, subject/identity, style, layout, or exact artwork. Describe what to preserve or borrow from each. A filename or written description does not attach an image. Read [reference-images.md](references/reference-images.md) for multi-reference work, masks, successive edits, or transparency.
+3. **Write the brief and choose controls.** State the intended image, then the visible details and constraints that matter. Quote required copy verbatim. For edits, name the change and the properties to preserve. Consult [craft.md](references/craft.md) for a difficult prompt or [gallery.md](references/gallery.md) when an example would help; neither is a prerequisite for a simple request. Start from the user's prompt when comparing models. Check [model-api.md](references/model-api.md) for parameter limits or unfamiliar settings.
+4. **Execute with the existing CLI.** Use the commands below; normal image work does not need a new SDK wrapper. No reference uses generations; any `-i` uses edits, including creation of a new scene from references. For a follow-up, attach the latest accepted image and preserve earlier accepted changes in the new prompt. Choose another output filename so the accepted image remains available.
+5. **Inspect and deliver.** Open the result and check the brief: identity, copy, layout, style, changed region, and retained details as relevant. The CLI checks decoding, format, requested dimensions, and real alpha when requested; visual inspection still determines success. Return the actual output path and any material defect. If a requirement fails, make a focused correction or compare a higher quality setting; do not claim an uninspected result is correct.
 
-## CLI resolution
+## Execute
 
-Preferred call order:
+Check `gpt-image --version` before relying on an existing PATH installation. This skill expects **0.3.0+** and a Flare default. Prefer the bundled launcher when the existing command is stale or its source is unclear:
 
 ```bash
-# Existing CLI on PATH
-gpt-image -p "PROMPT" [-f OUT] [-i REF...] [-m MASK] [options]
+# Existing compatible installation
+gpt-image -p 'A cream ceramic mug with a cobalt handle on linen, lit by a morning window. Product photo, visible glaze texture, empty space above, no text.' -f mug.png
 
-# Installed skill folder; use runtime-provided skill path when available
-uv run "$SKILL_DIR/scripts/generate.py" -p "PROMPT" [-f OUT] [-i REF...] [-m MASK] [options]
+# Use the skill directory supplied by the runtime, not an assumed home path
+uv run "$SKILL_DIR/scripts/generate.py" -p 'YOUR BRIEF' -f image.png
 
-# Direct transient CLI when the user requested setup/one-off CLI execution
-uvx --from git+https://github.com/wuyoscar/gpt_image_2_skill gpt-image -p "PROMPT" [options]
+# An explicit model choice
+gpt-image --model gpt-image-2.5-sunburst -p 'YOUR BRIEF' --quality xhigh -f image-sunburst.png
+
+# Actual files in the same order as the prompt's image numbers
+gpt-image -i subject.png -i style.png -p 'Image 1 supplies the subject and markings. Image 2 supplies only pencil contours, ochre/blue shapes, and paper grain. Illustrate the subject from Image 1 beside a doorway; exclude Image 2’s people and lettering.' -f illustration.png
 ```
 
-`scripts/generate.py` is a launcher: repo-local `src/gpt_image_cli` → installed `gpt-image` → PATH `gpt-image` → transient `uvx`/`uv` fallback.
+The launcher resolves repo-local Python module → installed module → PATH command → transient `uvx`/`uv` backend. It rejects backends older than 0.3.0 before sending an image request. If the remote package has not been updated yet, use this updated checkout with `uv run gpt-image` or explicitly install from it; do not bypass the version guard.
 
-## Key and cost rules
+Keep setup proportional to the request. Use existing tools and credentials. Do not overwrite shared skill folders or create secret files during ordinary generation. A requested setup/update authorizes the corresponding installation work. This skill owns direct Images API execution. If the user chooses a host-managed image tool, use that tool's contract and report only the model selection it actually exposes. Do not promise that a host's generic image tool selects Flare or Sunburst. Extracting a reusable prompt from an image without generating an output belongs to `get-prompt-from-image`.
 
-- CLI reads `OPENAI_API_KEY` from process env, then `.env`, then `~/.env` without overriding existing env; successful API calls may bill the user’s OpenAI account.
-- If host/runtime has native platform-managed image generation and the user wants that path, use the host tool instead of this CLI.
-- If `OPENAI_API_KEY` is unset, report missing key or use host-native generation when requested; do not write secrets.
-- If user wants to avoid local-key use, respect `unset OPENAI_API_KEY`; if a key exists in `.env`/`~/.env`, tell them to remove/rename it for the session rather than working around it.
-- Never print secret values.
+## Controls that change the result
 
-## Flags
+| Control | CLI behavior |
+|---|---|
+| `--model` | Flare by default; Sunburst and explicit model IDs pass through. Dated 2.5 snapshots are documented in [model-api.md](references/model-api.md). |
+| `--quality` | `auto`, `low`, `medium`, `high`, `xhigh`, `max`; CLI default `high`, API default `auto`. `xhigh`/`max` are 2.5 controls. |
+| `--size` | `auto`, literal `WIDTHxHEIGHT`, or a shortcut below. Match the actual canvas to the requested ratio. |
+| `-i, --image` / `-m, --mask` | Repeat `-i` in prompt order; mask applies to the first input. A mask guides an edit; it does not guarantee unchanged pixels elsewhere. |
+| `--background` / `--format` | `auto`, `opaque`, `transparent`; PNG/JPEG/WebP. Real transparency needs PNG/WebP and `--background transparent` on each applicable call. |
 
-| Flag | Values | Use |
+Other options: required `-p/--prompt`; `-f/--file`; `-n/--n` (1–10); JPEG/WebP `--compression` (0–100); `--moderation auto|low`; optional edit `--input-fidelity low|high`; `--user`; `--version`. Full semantics and restrictions live in [model-api.md](references/model-api.md), and `gpt-image --help` lists the executable interface.
+
+| Shortcut | Pixels | Ratio |
 |---|---|---|
-| `-p, --prompt` | string | Required prompt/edit instruction |
-| `-f, --file` | path | Output path; auto-named if omitted |
-| `-i, --image` | repeatable path | Use edits endpoint; supports multiple references |
-| `-m, --mask` | PNG path | Inpaint with alpha mask; requires `-i` |
-| `--model` | default `gpt-image-2` | Image model |
-| `--size` | `1k`, `2k`, `4k`, `portrait`, `landscape`, `square`, `wide`, `tall`, or literal | Canvas size |
-| `--quality` | `low`, `medium`, `high`, `auto` | Cost/quality dial |
-| `-n, --n` | integer | Number of images |
-| `--background` | `auto`, `opaque` | Generation background |
-| `--moderation` | `auto`, `low` | Generation moderation setting |
-| `--format` | `png`, `jpeg`, `webp` | Output encoding |
-| `--compression` | `0-100` | JPEG/WebP compression |
-| `--user` | string | Optional end-user identifier |
+| `1k`, `square` | 1024×1024 | 1:1 |
+| `portrait`, `landscape` | 1024×1536 / 1536×1024 | 2:3 / 3:2 |
+| `wide` | 2048×1152 | 16:9 |
+| `2k` | 2048×2048 | 1:1; experimental pixel area |
+| `4k`, `tall` | 3840×2160 / 2160×3840 | 16:9 / 9:16; experimental pixel area |
 
-Quality policy:
-- `low`: cheap drafts, broad exploration, many variants.
-- `medium`: normal exploration, style probing, balanced cost.
-- `high`: final assets, Chinese text, posters, diagrams, UI, paper figures, dense labels.
+For 3:4 use `1152x1536`; for 4:3 use `1536x1152`; for 2:1 use `2048x1024`. A camera resolution mentioned in a prompt does not set API dimensions. Outputs above 3,686,400 pixels are experimental. Do not choose `4k` just because the deliverable is a hero image or a print asset.
 
-Size policy:
-- default/social square: `1k` / `1024x1024`
-- poster/mobile/beauty: `portrait`
-- landscape/gameplay/photo: `landscape`
-- print/paper figure: `2k`
-- widescreen hero: `4k`
-- vertical story/banner: `tall`
+Use the existing high default for the first migration comparison, with prompt, references, size and format held constant. If a requirement fails, compare `xhigh` or `max` before expanding the prompt. Once an output meets the brief, lower quality may reduce latency/cost. Inspect the result; no quality setting guarantees exact lettering or identity. `-n` produces variants of one request, not a coordinated sequence of different scenes.
 
-## Endpoint routing
+## Credentials, errors, and files
 
-| Mode | Trigger | Endpoint |
-|---|---|---|
-| Text-to-image | no `-i` | `/v1/images/generations` |
-| Reference edit | one or more `-i` | `/v1/images/edits` |
-| Inpaint | `-i` + `-m` | `/v1/images/edits` with mask |
+Credentials load from process `OPENAI_API_KEY`, then the current directory's `.env`, then `~/.env`, without overwriting existing values. Never print a key. Unsetting the process variable does **not** disable dotenv loading: if the user declines local-key use, do not call this CLI. Missing credentials require local configuration by the user or an already-authorized setup path.
 
-Surface API errors verbatim enough for debugging; exit codes: `0` success, `1` API/refusal, `2` bad args/missing key.
+Successful stdout contains output paths only. Automatic filenames use the current directory, or its `fig/` subdirectory if present. An extension can select PNG/JPEG/WebP; an explicit conflicting `--format` is rejected. Multiple outputs receive `_0`, `_1`, … suffixes. Explicit existing filenames may be overwritten on success, so retain accepted edits under new filenames.
 
-## Reference loading
+Exit codes: `0` success, `1` API or output failure, `2` invalid input/configuration. Surface the actionable API error and request ID when available. A model-access or parameter error requires correcting access or the request, not silently changing model, dropping references, or claiming a result.
 
-- `references/gallery.md`: routing index for the 162-prompt Reference Gallery Atlas. Load first.
-- `references/gallery-*.md`: concrete prompts, previews, paths, metadata, attribution. Load 1 category for normal requests; 2–3 for hybrids.
-- `references/craft.md`: prompt-craft checklist. Load for prompt repair, exact text, UI/data/diagram grammar, edit invariants, and multi-panel consistency.
-- `references/openai-cookbook.md`: official parameter/model semantics. Load for API behavior or model capability questions.
+## Reference shelf
 
-Reference loading policy: load the smallest useful slice; never load all category files by default.
+| Read when | Reference |
+|---|---|
+| API/model/size/quality questions | [model-api.md](references/model-api.md), current contract, checked 2026-09-08 |
+| Reference roles, masks, chained edits, alpha | [reference-images.md](references/reference-images.md) |
+| Exact text, art direction, layouts, prompt repair | [craft.md](references/craft.md) |
+| A concrete example helps | [gallery.md](references/gallery.md) → [2.5 recipes](references/gallery-gpt-image-2-5.md) or a relevant historical category |
+| Historical cookbook provenance | [openai-cookbook.md](references/openai-cookbook.md), archived Image 2-era material; current contract takes precedence |
 
-## Verification
-
-- Before API call: confirm endpoint mode, size, quality, output path, and required reference/mask files.
-- After CLI call: report path(s) printed by the CLI and surface stderr on failure.
-- For edits/inpaints: verify `-i` paths exist; verify `-m` exists when used.
-
-Preserve `Curated` vs `Author + Source` metadata when adapting examples. Add new collected prompts to the Reference Gallery before README promotion.
+Load the smallest useful slice. Preserve prompt attribution separately from the actual generating model and output provenance. The old gallery is historical; its previews are not evidence of 2.5 performance.

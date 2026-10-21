@@ -1,0 +1,65 @@
+{
+  "case": "e1-mug",
+  "started_utc": "2026-09-08T20:57:57.866613+00:00",
+  "sdk_version": "3.9.0",
+  "argv": [
+    "-p",
+    "Create a product photograph for a ceramic studio’s online shop: a handmade cream mug with a cobalt-blue handle beside folded linen. Show uneven glaze and fine clay texture, morning window light from the left, a soft shadow, warm neutral surroundings, and empty space above for website copy. No text inside the image.",
+    "-f",
+    "docs/gpt-image-2-5/live/e1-mug.png"
+  ],
+  "post_processing": "none",
+  "visual_review": {
+    "status": "accepted",
+    "findings": "Cream ceramic mug with cobalt handle, visible glaze/clay texture, folded linen, warm left-side window light, soft shadow and generous empty space above. No text. Minor unrequested plant at the far edge does not conflict with the brief."
+  },
+  "endpoint": "/v1/images/generations",
+  "request": {
+    "prompt": "Create a product photograph for a ceramic studio’s online shop: a handmade cream mug with a cobalt-blue handle beside folded linen. Show uneven glaze and fine clay texture, morning window light from the left, a soft shadow, warm neutral surroundings, and empty space above for website copy. No text inside the image.",
+    "file": "docs/gpt-image-2-5/live/e1-mug.png",
+    "image": null,
+    "mask": null,
+    "model": "gpt-image-2.5-flare",
+    "size": "1024x1024",
+    "quality": "high",
+    "n": 1,
+    "background": null,
+    "moderation": null,
+    "input_fidelity": null,
+    "output_format": "png",
+    "output_compression": null,
+    "user": null
+  },
+  "input_sha256": {},
+  "response": {
+    "created": 1788901096,
+    "background": "opaque",
+    "output_format": "png",
+    "quality": "high",
+    "size": "1024x1024",
+    "usage": {
+      "input_tokens": 68,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 68
+      },
+      "output_tokens": 1756,
+      "total_tokens": 1824,
+      "output_tokens_details": {
+        "image_tokens": 1756,
+        "text_tokens": 0
+      }
+    }
+  },
+  "request_id": "req_16946bec943a41aab51fcf8633f89f66",
+  "api_elapsed_seconds": 19.189,
+  "exit_code": 0,
+  "elapsed_seconds": 19.287,
+  "completed_utc": "2026-09-08T20:58:17.154116+00:00",
+  "output_sha256": "721f57e4a90fdc0e2a305272de7e2fe73c08049eddacac16ac769ba850437e5d",
+  "effective_moderation": "low",
+  "application_attempts": 1,
+  "sdk_automatic_retries": "not separately instrumented",
+  "model_snapshot": "not returned by the Images response",
+  "uncached_rate_estimate_usd": 0.05302
+}

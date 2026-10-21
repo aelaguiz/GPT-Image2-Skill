@@ -1,0 +1,1 @@
+recursive-include skills/gpt-image *.md *.yaml *.py *.png

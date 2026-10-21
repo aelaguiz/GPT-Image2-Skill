@@ -1,0 +1,75 @@
+{
+  "case": "e8-annotation",
+  "started_utc": "2026-09-08T21:03:13.435594+00:00",
+  "sdk_version": "3.9.0",
+  "argv": [
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/coat.png",
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/coat-annotated.png",
+    "-p",
+    "Image 1 is the clean base. Image 2 only identifies the sleeve on the viewer’s right. Recolor that sleeve forest green. Preserve the coat body, other sleeve, buttons, outlines, composition and background. Include no annotation marks or note text.",
+    "-f",
+    "docs/gpt-image-2-5/live/e8-annotation.png"
+  ],
+  "post_processing": "none",
+  "visual_review": {
+    "status": "accepted_with_caveat",
+    "findings": "Viewer-right sleeve becomes forest green; annotation circle and note text are absent. Coat body, opposite sleeve and four buttons retained. Fine shading changes outside the sleeve mean preservation is visual rather than pixel-identical."
+  },
+  "endpoint": "/v1/images/edits",
+  "request": {
+    "prompt": "Image 1 is the clean base. Image 2 only identifies the sleeve on the viewer’s right. Recolor that sleeve forest green. Preserve the coat body, other sleeve, buttons, outlines, composition and background. Include no annotation marks or note text.",
+    "file": "docs/gpt-image-2-5/live/e8-annotation.png",
+    "image": [
+      "skills/gpt-image/assets/gpt-image-2-5/coat.png",
+      "skills/gpt-image/assets/gpt-image-2-5/coat-annotated.png"
+    ],
+    "mask": null,
+    "model": "gpt-image-2.5-flare",
+    "size": "1024x1024",
+    "quality": "high",
+    "n": 1,
+    "background": null,
+    "moderation": null,
+    "input_fidelity": null,
+    "output_format": "png",
+    "output_compression": null,
+    "user": null
+  },
+  "input_sha256": {
+    "skills/gpt-image/assets/gpt-image-2-5/coat.png": "9e6fe1ff5a9cc7810160f649b2118230084efedb111fd5dbf56249e999d9c0d7",
+    "skills/gpt-image/assets/gpt-image-2-5/coat-annotated.png": "ec97c40c660531b3ce551c817d288653626661b8b341120fe7d0b1c95eded6eb"
+  },
+  "response": {
+    "created": 1788901408,
+    "background": "opaque",
+    "output_format": "png",
+    "quality": "high",
+    "size": "1024x1024",
+    "usage": {
+      "input_tokens": 2126,
+      "input_tokens_details": {
+        "image_tokens": 2048,
+        "text_tokens": 78
+      },
+      "output_tokens": 1756,
+      "total_tokens": 3882,
+      "output_tokens_details": {
+        "image_tokens": 1756,
+        "text_tokens": 0
+      }
+    }
+  },
+  "request_id": "req_1ea83435e4a044b9a92f01743913abe2",
+  "api_elapsed_seconds": 15.171,
+  "exit_code": 0,
+  "elapsed_seconds": 15.21,
+  "completed_utc": "2026-09-08T21:03:28.646385+00:00",
+  "output_sha256": "28d8795ed955cb4601c4669f50a48c6057e1c1cc378941731d55111df986d978",
+  "effective_moderation": "API default",
+  "application_attempts": 1,
+  "sdk_automatic_retries": "not separately instrumented",
+  "model_snapshot": "not returned by the Images response",
+  "uncached_rate_estimate_usd": 0.069454
+}

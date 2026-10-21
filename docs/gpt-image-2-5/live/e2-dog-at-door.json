@@ -1,0 +1,75 @@
+{
+  "case": "e2-dog-at-door",
+  "started_utc": "2026-09-08T20:58:48.717931+00:00",
+  "sdk_version": "3.9.0",
+  "argv": [
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/dog.png",
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/pencil-style.png",
+    "-p",
+    "Image 1 supplies the dog: preserve its upright ears, black patch around the eye on the viewer’s left, white muzzle and belly, dark body and red collar. Image 2 supplies only sparse pencil contours, flat ochre and blue shapes, and paper grain. Illustrate this dog waiting beside a front door at dog-eye level. Exclude Image 2’s person, chair and lettering. No text.",
+    "-f",
+    "docs/gpt-image-2-5/live/e2-dog-at-door.png"
+  ],
+  "post_processing": "none",
+  "visual_review": {
+    "status": "accepted",
+    "findings": "Subject keeps upright ears, viewer-left eye patch, white muzzle/belly, dark body, red collar and round tag. Blue door and ochre mat establish the new scene. Sparse contours and paper grain transfer without the style reference’s person, chair or STUDY lettering."
+  },
+  "endpoint": "/v1/images/edits",
+  "request": {
+    "prompt": "Image 1 supplies the dog: preserve its upright ears, black patch around the eye on the viewer’s left, white muzzle and belly, dark body and red collar. Image 2 supplies only sparse pencil contours, flat ochre and blue shapes, and paper grain. Illustrate this dog waiting beside a front door at dog-eye level. Exclude Image 2’s person, chair and lettering. No text.",
+    "file": "docs/gpt-image-2-5/live/e2-dog-at-door.png",
+    "image": [
+      "skills/gpt-image/assets/gpt-image-2-5/dog.png",
+      "skills/gpt-image/assets/gpt-image-2-5/pencil-style.png"
+    ],
+    "mask": null,
+    "model": "gpt-image-2.5-flare",
+    "size": "1024x1024",
+    "quality": "high",
+    "n": 1,
+    "background": null,
+    "moderation": null,
+    "input_fidelity": null,
+    "output_format": "png",
+    "output_compression": null,
+    "user": null
+  },
+  "input_sha256": {
+    "skills/gpt-image/assets/gpt-image-2-5/dog.png": "2439274ca4ffb880517b81510557c62b7a5125f4ecf5f5174f41ed78258823f7",
+    "skills/gpt-image/assets/gpt-image-2-5/pencil-style.png": "79cf4a0f0d8198feba9ef92a129fca17ee3361ff8ad4e51f0008ec56211b65f4"
+  },
+  "response": {
+    "created": 1788901146,
+    "background": "opaque",
+    "output_format": "png",
+    "quality": "high",
+    "size": "1024x1024",
+    "usage": {
+      "input_tokens": 2157,
+      "input_tokens_details": {
+        "image_tokens": 2048,
+        "text_tokens": 109
+      },
+      "output_tokens": 1756,
+      "total_tokens": 3913,
+      "output_tokens_details": {
+        "image_tokens": 1756,
+        "text_tokens": 0
+      }
+    }
+  },
+  "request_id": "req_865114fce7174e9dae635a376ed4e391",
+  "api_elapsed_seconds": 17.661,
+  "exit_code": 0,
+  "elapsed_seconds": 17.699,
+  "completed_utc": "2026-09-08T20:59:06.417169+00:00",
+  "output_sha256": "e2b9c0ac4a950e578973706ccef281b743db363f201398188f9da70582c1131f",
+  "effective_moderation": "API default",
+  "application_attempts": 1,
+  "sdk_automatic_retries": "not separately instrumented",
+  "model_snapshot": "not returned by the Images response",
+  "uncached_rate_estimate_usd": 0.069609
+}

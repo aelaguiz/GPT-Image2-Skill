@@ -1,0 +1,77 @@
+{
+  "case": "e6-room",
+  "started_utc": "2026-09-08T21:00:06.378170+00:00",
+  "sdk_version": "3.9.0",
+  "argv": [
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/room-sketch.png",
+    "-i",
+    "skills/gpt-image/assets/gpt-image-2-5/materials.png",
+    "-p",
+    "Image 1 is the layout sketch: preserve its window position, sofa footprint, table placement and viewpoint. The WINDOW, SOFA and TABLE notes identify objects and must not appear in the result. Image 2 supplies only light oak, woven cream upholstery and matte green ceramic material cues. Render the sketched room as a believable daylight interior: oak table, cream sofa and one small green ceramic bowl on the table. Retain Image 1’s furniture arrangement; do not copy Image 2 as a swatch board.",
+    "--size",
+    "landscape",
+    "-f",
+    "docs/gpt-image-2-5/live/e6-room.png"
+  ],
+  "post_processing": "none",
+  "visual_review": {
+    "status": "accepted_with_caveat",
+    "findings": "Window remains on the left wall, sofa underneath, low table to its right, with the same general perspective. Oak table/floor, cream woven sofa and green ceramic bowl match material roles; no sketch labels or swatch board. Pillow/rug additions and approximate geometry make it an interior concept, not exact architectural reconstruction."
+  },
+  "endpoint": "/v1/images/edits",
+  "request": {
+    "prompt": "Image 1 is the layout sketch: preserve its window position, sofa footprint, table placement and viewpoint. The WINDOW, SOFA and TABLE notes identify objects and must not appear in the result. Image 2 supplies only light oak, woven cream upholstery and matte green ceramic material cues. Render the sketched room as a believable daylight interior: oak table, cream sofa and one small green ceramic bowl on the table. Retain Image 1’s furniture arrangement; do not copy Image 2 as a swatch board.",
+    "file": "docs/gpt-image-2-5/live/e6-room.png",
+    "image": [
+      "skills/gpt-image/assets/gpt-image-2-5/room-sketch.png",
+      "skills/gpt-image/assets/gpt-image-2-5/materials.png"
+    ],
+    "mask": null,
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "high",
+    "n": 1,
+    "background": null,
+    "moderation": null,
+    "input_fidelity": null,
+    "output_format": "png",
+    "output_compression": null,
+    "user": null
+  },
+  "input_sha256": {
+    "skills/gpt-image/assets/gpt-image-2-5/room-sketch.png": "6df9a016c0e9297875d0260ffafa55ccfc4949f54be8c01479d6d4c943b314fb",
+    "skills/gpt-image/assets/gpt-image-2-5/materials.png": "b8ff74eeeeecca8fe9edc628bc0e048ce90cd3ec99032a6f886e8b02f2650d62"
+  },
+  "response": {
+    "created": 1788901223,
+    "background": "opaque",
+    "output_format": "png",
+    "quality": "high",
+    "size": "1536x1024",
+    "usage": {
+      "input_tokens": 2690,
+      "input_tokens_details": {
+        "image_tokens": 2560,
+        "text_tokens": 130
+      },
+      "output_tokens": 1372,
+      "total_tokens": 4062,
+      "output_tokens_details": {
+        "image_tokens": 1372,
+        "text_tokens": 0
+      }
+    }
+  },
+  "request_id": "req_f44aaf324dc34e4cadcd47a5b1ffccad",
+  "api_elapsed_seconds": 17.808,
+  "exit_code": 0,
+  "elapsed_seconds": 17.85,
+  "completed_utc": "2026-09-08T21:00:24.228167+00:00",
+  "output_sha256": "446713fd5707ea468616d56e49ec44a58480b4d71adf7c029de62c97f2b8853b",
+  "effective_moderation": "API default",
+  "application_attempts": 1,
+  "sdk_automatic_retries": "not separately instrumented",
+  "model_snapshot": "not returned by the Images response",
+  "uncached_rate_estimate_usd": 0.06229
+}

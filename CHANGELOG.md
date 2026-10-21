@@ -1,10 +1,12 @@
 # Changelog
 
-## Unreleased
+## Unreleased — v0.3.0
 
-- Clarified the GPT Image skill as a gallery-first, CLI-first agent runbook: analyze user prompts, search Reference Gallery/craft files, confer when useful, then invoke the packaged CLI.
-- Added safer install and API-key guidance: check existing CLI/skill state first, avoid blind reinstall/overwrite, keep global/shared installs opt-in, and never write secrets unless explicitly requested.
-- Updated cross-agent installation wording for Codex, OpenClaw, Claude Code, and manual skill runtimes.
+- Default skill and CLI requests to `gpt-image-2.5-flare`; preserve explicit Sunburst, snapshot and compatible legacy selections. Add `xhigh`/`max`, effective `--version`, and a launcher guard against stale backends.
+- Support transparent PNG/WebP generation and editing, coherent filename/encoding selection, ordered reference uploads, validated masks and output integrity. Keep fidelity omitted by default, scope Image 2's restriction to its exact aliases, and send explicit edit moderation through SDK `extra_body`.
+- Rewrite the skill around clear briefs, inspected reference roles, retained accepted edits and visual verification. Add current model/API and reference-image guides; preserve useful craft and label the old cookbook/gallery as historical.
+- Add ten live-tested 2.5 feature recipes, twelve portable original reference drawings, actual output/usage records and inspected previews. Complete 22 live requests, including an Image 2 baseline and a focused identity correction; document observed edit/alpha limitations without claiming a general benchmark.
+- Align English/Chinese current guidance, plugin/package metadata and contributor rules. Add request/output/launcher regression tests and raise the inspected SDK floor to 3.9.0 with Pillow validation.
 
 ## v0.2.0 — 2026-04-25
 

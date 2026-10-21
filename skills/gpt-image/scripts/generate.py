@@ -2,8 +2,9 @@
 # /// script
 # requires-python = ">=3.11"
 # dependencies = [
-#     "openai>=1.55",
+#     "openai>=3.9.0",
 #     "python-dotenv>=1.0",
+#     "pillow>=11.3",
 # ]
 # ///
 """Skill launcher for the shared gpt-image CLI.
@@ -22,9 +23,24 @@ from __future__ import annotations
 import shutil
 import subprocess
 import sys
+import re
 from pathlib import Path
 
 _REPO_URL = "git+https://github.com/wuyoscar/gpt_image_2_skill"
+_MIN_BACKEND = (0, 3, 0)
+
+
+def _compatible_version(value: str) -> bool:
+    match = re.search(r"\b(\d+)\.(\d+)\.(\d+)\b", value)
+    return bool(match and tuple(map(int, match.groups())) >= _MIN_BACKEND)
+
+
+def _old_backend(version: str) -> RuntimeError:
+    return RuntimeError(
+        f"gpt-image CLI backend {version!r} is older than required 0.3.0. "
+        "Install an updated checkout with 'uv tool install /path/to/checkout' "
+        "or upgrade to the published 0.3.0+ release, then retry. No image request was sent."
+    )
 
 
 def _import_local_or_installed_main():
@@ -39,19 +55,29 @@ def _import_local_or_installed_main():
             sys.path.insert(0, str(repo_src))
 
     try:
+        from gpt_image_cli import __version__
         from gpt_image_cli.cli import main  # type: ignore
-    except ModuleNotFoundError:
-        return None
+    except ModuleNotFoundError as exc:
+        if exc.name == "gpt_image_cli":
+            return None
+        raise RuntimeError(f"CLI backend dependency is missing: {exc.name}. Run with uv or install the matching CLI package.") from exc
+    except ImportError as exc:
+        raise _old_backend("unversioned") from exc
+    if not _compatible_version(__version__):
+        raise _old_backend(__version__)
     return main
 
 
 def _delegate(command: list[str]) -> int:
-    """Run another CLI process with the original argv and return its exit code."""
+    """Check the actual backend before delegating any generation request."""
+    check = subprocess.run(command + ["--version"], check=False, capture_output=True, text=True)
+    if check.returncode or not _compatible_version(check.stdout):
+        raise _old_backend(check.stdout.strip() or "unknown")
     completed = subprocess.run(command + sys.argv[1:], check=False)
     return completed.returncode
 
 
-def main() -> int:
+def _run() -> int:
     cli_main = _import_local_or_installed_main()
     if cli_main is not None:
         return int(cli_main() or 0)
@@ -74,6 +100,14 @@ def main() -> int:
         file=sys.stderr,
     )
     return 2
+
+
+def main() -> int:
+    try:
+        return _run()
+    except (RuntimeError, OSError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":

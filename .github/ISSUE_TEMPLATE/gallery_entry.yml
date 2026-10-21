@@ -28,9 +28,9 @@ body:
     attributes:
       label: Source / attribution
       description: If adapted from an outside prompt, include author and source link.
-      placeholder: "Original, or Author + Source URL"
+      placeholder: "Prompt author + source URL; separately identify who generated the image"
   - type: textarea
     id: notes
     attributes:
       label: Notes
-      description: Visual quality notes, safety constraints, or examples to compare against.
+      description: State whether this is an unexecuted recipe or an inspected output. For outputs include actual model, date, endpoint, ordered reference inputs/roles, settings, post-processing and observed defects.
