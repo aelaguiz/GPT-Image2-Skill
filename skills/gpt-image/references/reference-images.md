@@ -28,7 +28,7 @@ Inspect both references first; the named traits above must match the actual dog 
 gpt-image -i bottle.png -i lighting-reference.png -i approved-wordmark.png -p 'Image 1 supplies the bottle: preserve its silhouette, cap, proportions and material. Image 2 supplies only warm side light, pale stone and muted olive shadows. Image 3 supplies the approved wordmark. Photograph the bottle on pale stone, centered with empty space above. Place Image 3’s wordmark on the front label above the exact copy "COLD BREW" and "250 ml". Do not copy Image 2’s product, typography or props.' -f bottle-campaign.png
 ```
 
-These are three ordinary image inputs; there is no `style_reference` or logo-lock parameter. Inspect wordmark shape and spelling. If approved artwork must remain pixel- or vector-exact, generate the surrounding scene and place the artwork with deterministic compositing. Do not describe a model's redrawing as exact reproduction.
+These are three ordinary image inputs; there is no `style_reference` or logo-lock parameter. Inspect wordmark shape and spelling against the reference; when the model draws it wrong, ask again with a tighter prompt or a cleaner reference. A fault in a model's picture is fixed by another model pass, never by compositing in code. The one exception is a finished mark the brand supplies (a logo, a store badge), placed whole and unchanged on the finished picture, never cut into the scene. Do not describe a model's redrawing as exact reproduction.
 
 ## Continue from the accepted image
 
@@ -63,7 +63,7 @@ For an alpha mask, prepare a PNG first input and PNG mask with exactly the same 
 gpt-image -i room.png -m chair-mask.png -p 'Replace the masked chair with a low oak chair with cream upholstery. Match the existing room lighting and perspective; preserve the surrounding room.' -f room-new-chair.png
 ```
 
-A mask guides generation; inspect the entire image for collateral changes. If every pixel outside the selected region must remain identical, use the generated region in a deterministic composite over the original and inspect its boundary. Current format/file-size limits are in [model-api.md](model-api.md).
+A mask guides generation; inspect the entire image for collateral changes. When something outside the selected region changed, edit again from the clean original with a tighter mask and prompt; a fault in a model's edit is fixed by another model pass, never by pasting the generated region over the original or copying original pixels back. Current format/file-size limits are in [model-api.md](model-api.md).
 
 ## Transparent assets
 

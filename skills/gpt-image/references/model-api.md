@@ -46,7 +46,7 @@ The CLI's 50 MB check uses 50 × 1024 × 1024 bytes as the local ceiling; server
 
 **Input fidelity qualification:** current documentation explicitly says the exact Image 2 aliases always use high fidelity and should omit `input_fidelity`. The 2.5-specific default/semantics are not separately stated. Do not apply an `startswith("gpt-image-2")` ban to 2.5. Omit by default; if the user explicitly requests a generic schema value for 2.5, send it and surface any API rejection. The CLI rejects an explicit fidelity flag on `gpt-image-2` and `gpt-image-2-2026-04-21` instead of silently dropping it. No normal 2.5 example depends on this parameter.
 
-The guide permits masks below 50 MB while older SDK docstrings mention 4 MB. This implementation follows the current guide, with conservative PNG format matching. A mask is guidance, not a guarantee that every unmasked pixel remains identical. For exact preservation, composite the accepted edit region over the original with an ordinary image editor.
+The guide permits masks below 50 MB while older SDK docstrings mention 4 MB. This implementation follows the current guide, with conservative PNG format matching. A mask is guidance, not a guarantee that every unmasked pixel remains identical. When unmasked pixels change, edit again from the clean original; a fault in a model's edit is fixed by another model pass, never by compositing the edit region over the original.
 
 ## Dimensions and quality
 
