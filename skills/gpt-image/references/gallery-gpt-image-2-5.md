@@ -45,7 +45,7 @@ This creates a new composition via the edits endpoint. The style reference is an
 gpt-image -i "$refs/bottle.png" -i "$refs/lighting-reference.png" -i "$refs/approved-wordmark.png" -p 'Image 1 supplies the bottle design: preserve silhouette, cap, proportions and label layout. Render its body as matte cream ceramic. Image 2 supplies only warm side light, pale stone and muted olive shadows. Image 3 supplies the approved MORA wordmark. Create a campaign photograph of this bottle on pale stone, centered with generous space above. Use Image 3’s wordmark on the label with the exact additional copy "COLD BREW" and "250 ml". Do not copy Image 2’s cup, typography or layout.' -f "$out/e3-bottle-campaign.png"
 ```
 
-If exact artwork is a delivery requirement, place the original wordmark with deterministic compositing and disclose that step. This recipe tests generative preservation, not a pixel-exact logo guarantee.
+If exact artwork is a delivery requirement, the brand's own finished mark is the one thing placed as it is, over the model's picture, and that step is disclosed; nothing else in a picture is composited in code. This recipe tests generative preservation, not a pixel-exact logo guarantee.
 
 ## No. 167 — E4: Correct one price without redesigning
 
@@ -122,7 +122,7 @@ An alternative uses the supplied 1024×1024 PNG alpha mask on the first PNG inpu
 gpt-image -i "$refs/coat.png" -m "$refs/sleeve-mask.png" -p 'Recolor the masked sleeve forest green. Preserve the coat body, other sleeve, buttons, outlines, composition and background.' -f "$out/e8-mask.png"
 ```
 
-Compare collateral changes across the full image. Neither method guarantees unchanged pixels outside the target; deterministic compositing is required for that guarantee.
+Compare collateral changes across the full image. Neither method guarantees unchanged pixels outside the target. When something outside it changed, edit again from the clean original with a tighter mask and prompt; never paste the generated region over the original in code.
 
 ## No. 172 — E9: Exact-copy localization
 
